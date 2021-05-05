@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+   <!-- This css for login  form register -->
+  <!-- Font Icon -->
+  <link rel="stylesheet" href="/assets/registerDesign/fonts/material-icon/css/material-design-iconic-font.min.css">
+
+  <!-- Main css -->
+  <link rel="stylesheet" href="/assets/registerDesign/css/style.css">
+</head>
+<body>
+  <!-- Sign up form -->
+<section class="signup">
+  <div class="container">
+      <div class="signup-content">
+          <div class="signup-form">
+              <h2 class="form-title">Sign up</h2>
+              <form method="POST" class="register-form" id="register-form"  #registerform="ngForm" (ngSubmit)="addData(registerform)">
+                  <div class="form-group">
+                      <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                      <input type="text" name="name" id="name" placeholder="Your Name"
+                      #name="ngModel"
+                      required
+                      [(ngModel)]="userservice.newUser.name"
+                      [ngClass]="{'is-invalid':registerform.submitted && name.invalid}"/>
+                  </div>
+
+                  <mat-error *ngIf="registerform.submitted && name.invalid">
+                    <mat-error *ngIf="name.errors?.required">
+                      Enter our Name
+                    </mat-error>
+                  </mat-error>
+
+
+
+                  <div class="form-group">
+                      <label for="email"><i class="zmdi zmdi-email"></i></label>
+                      <input type="email" name="email" id="email" placeholder="Your Email"
+                      #email="ngModel"
+                      required
+                     [(ngModel)]="userservice.newUser.email"
+                     [ngClass]="{'is-invalid':registerform.submitted && email.invalid}"/>
+                  </div>
+
+
+                  <mat-error *ngIf="registerform.submitted && email.invalid">
+                    <mat-error *ngIf="email.errors?.required">
+                     Please enter your email
+                    </mat-error>
+                    <!-- <mat-error *ngIf="email.errors?.email">
+                      Please enter valid email
+                     </mat-error> -->
+                  </mat-error>
+
+                  <div class="form-group">
+                    <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                    <input type="text" name="contact" id="name" placeholder="Your Contact"
+                    #contact="ngModel"
+                    required
+                    [(ngModel)]="userservice.newUser.contact"
+                    [ngClass]="{'is-invalid':registerform.submitted && contact.invalid}"/>
+                </div>
+
+                <mat-error *ngIf="registerform.submitted && contact.invalid">
+                  <mat-error *ngIf="contact.errors?.required">
+                   Please enter your contact
+                  </mat-error>
+                </mat-error>
+
+                  <div class="form-group">
+                      <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+                      <input type="password" name="password" id="pass" placeholder="Password"
+                      #password="ngModel"
+                      required
+                      minlength="4"
+                      [(ngModel)]="userservice.newUser.password"
+                      [ngClass]="{'is-invalid':registerform.submitted && password.invalid}"/>
+                  </div>
+
+                  <mat-error *ngIf="registerform.submitted && password.invalid">
+                    <mat-error *ngIf="password.errors?.required">
+                     Please enter your password
+                    </mat-error>
+                    <mat-error *ngIf="password.errors?.minlength">
+                      Password should be greater than 4 characters
+                     </mat-error>
+                  </mat-error>
+
+
+
+
+                  <div class="form-group">
+                    <label for="Confirmpassword"><i class="zmdi zmdi-lock"></i></label>
+                    <input type="password" name="confirmpassword" id="c_pass" placeholder="Confirm Password"
+                    #confirmpassword="ngModel"
+                    pattern={{password.value}}
+                    required
+
+                    [(ngModel)]="userservice.newUser.confirmpassword"
+                     [ngClass]="{'is-invalid':registerform.submitted &&confirmpassword.invalid}"/>
+                </div>
+
+                <mat-error *ngIf="registerform.submitted && confirmpassword.invalid">
+                  <mat-error *ngIf="confirmpassword.errors?.required">
+                   Please confirm your password
+                  </mat-error>
+                  <mat-error *ngIf="confirmpassword.errors?.pattern">
+                      password and confirm password should be matched
+                  </mat-error>
+                </mat-error>
+
+
+                <div class="form-group">
+                  <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
+                  <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
+                </div>
+
+
+                  <div class="form-group form-button">
+                      <input type="submit" name="signup" id="signup" class="form-submit" value="Register"/>
+                  </div>
+              </form>
+          </div>
+          <div class="signup-image">
+              <figure><img src="./assets/registerDesign/images/signup-image.jpg" alt="sing up image"></figure>
+              <a routerLink="/login" class="signup-image-link">I am already member</a>
+          </div>
+      </div>
+  </div>
+</section>
+
+ <!-- this javascript is for login registeration form -->
+         <!-- JS -->
+         <script src="/assets/registerDesign/vendor/jquery/jquery.min.js"></script>
+         <script src="/assets/registerDesign/js/main.js"></script>
+
+
+</body>
+</html>
+
+

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+      <header>
+        <div class="header-area">
+          <div class="main-header ">
+
+          </div>
+        </div>
+      </header>
+<div class="container-fluid maindiv">
+  <div class="row">
+
+<!-- Left div -->
+
+    <div class="col-2 col">
+      <div class=" container  shadow-sm p-3 bg-body rounded">
+        <div class="container-fluid Heading pt-2 shadow-sm p-3 bg-body rounded">
+           <p><a href="#">Category</a></p>
+        </div>
+        <div class="container-fluid Heading pt-2 shadow-sm p-3 bg-body rounded">
+          <nav>
+            <ul class="greyleft">
+              <li  class="sidenav">
+                <a href="#">Pariyanka Chopra(Musician)</a>
+              </li>
+              <li class="sidenav">
+                <a href="#">Gurtej Singh(Best Teacher)</a>
+              </li>
+              <li class="sidenav">
+                <a href="#">Sports</a>
+              </li>
+              <li class="sidenav">
+                <a href="#">Mathematics</a>
+              </li>
+              <li class="sidenav">
+                <a href="#">Music</a>
+              </li>
+              <li class="sidenav">
+                <a href="#">Fashion and Style</a>
+              </li>
+              <li class="sidenav">
+                <a href="#">food</a>
+              </li>
+              <li class="sidenav">
+                <a href="#">+ Discover Category</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+
+        <!-- Center div here -->
+
+    <div class="col-7 col shadow p-3 mb-5 bg-body rounded">
+        <div class="container Heading pt-2 text-center shadow-sm p-3 bg-body rounded">
+         <p> <button mat-button (click)="openDialogue()">Share a Question or link?</button></p>
+          <!-- <p><a href="" (click)="openDialogue()">Share a Question or link?</a></p> -->
+        </div>
+        <div class="container Heading shadow-sm p-3 bg-body rounded ">
+           <span class="username"><img src="../../assets/svg(s)/users.png" width="30"  alt="userimg">Aryan Kapoor .</span>
+           <span class="follow"><a href="#">Follow</a></span>
+           <span class="close mt-2"><a href="#"><img src="../../assets/svg(s)//Closesvg.png" alt=""></a></span><br>
+           <span class="follow mt-0">Lives in Rajasthan,India.</span>
+           <span class="follow">February 15</span>
+           <div class="question mt-3">
+              <a href="#">Why does my JavaScript code receive a "No 'Access-Control-Allow-Origin' header is present on?</a>
+           </div>
+           <div class="info">
+            Mod note: This question is about why Postman is not subject to CORS restrictions in the same way an XMLHttpRequest is. … I know that the API or remote resource must set the header, but why did it work when I made the request via the Chrome extension Postman?
+           </div>
+           <div class="bottom">
+             <a href="#"><img id="like" src="../../assets/svg(s)/up.png" alt="like"></a><span>7.4K</span>
+             <a href="#"><img src="../../assets/svg(s)/down.png" alt="dislike"></a>
+             <a class="ml-4" href="#"><img src="../../assets/svg(s)/share.png" alt="share"></a><span class="ml-2 mr-4">21</span>
+             <a href="#"><img src="../../assets/svg(s)/send.png" alt="share"></a><br><br>
+             <!-- <span><a href="#"><img src="../../assets/svg(s)/more.png" alt="more"></a></span> -->
+             <mat-accordion>
+              <mat-expansion-panel hideToggle class="expansiontittle">
+                <mat-expansion-panel-header class="expansiontittle">
+                  <mat-panel-title class="expansiontittle">
+                    Give a bettter answer
+                  </mat-panel-title >
+                </mat-expansion-panel-header>
+                <div>
+                  <div class="answered"  >
+                    <div class="container Heading shadow-sm p-3 bg-body rounded mt-3">
+                      <span class="username"><img src="../../assets/svg(s)/users.png" width="30"  alt="userimg">Aryan Kapoor .</span>
+                    </div>
+                    <div class="customfont Heading containern shadow-sm p-3 bg-body rounded ">
+                      <a href="#"><img src="../../assets/svg(s)/bold.svg" width="20" class="mr-3" alt="bold"></a>
+                      <a href="#"><img src="../../assets/svg(s)/italic.svg" width="20" class="mr-3" alt="italic"></a>
+                      <!-- <a href="#"><img src="../../assets/svg(s)/ol.svg" width="20" class="mr-4" alt="ordered list"></a> -->
+                      <a href="#"><img src="../../assets/svg(s)/ul.svg" width="23" class="mr-2" alt="unordered list"></a>
+                      <span ml-auto>
+                        <a href="#"><img src="../../assets/svg(s)/photo.svg" width="23" alt=""></a>
+                      </span>
+                    </div>
+                    <div class="inputans">
+                      <mat-form-field class="ansfield">
+                        <textarea matInput name="answerText" class="answerText"  rows="3" placeholder="Write Answer" ></textarea>
+                      </mat-form-field>
+                      <button type="submit" class="postbtn" mat-stroked-button >Post</button>
+                      <button type="button" class="draftbtn mt-2" mat-stroked-button >Save Draft</button>
+
+
+                    </div>
+                  </div>
+                </div>
+               </mat-expansion-panel>
+             </mat-accordion>
+           </div>
+        </div>
+        <div class="container Heading shadow-sm p-3 bg-body rounded ">
+           <span class="username"><img src="../../assets/svg(s)/users.png" width="30"  alt="userimg">Aryan Kapoor .</span>
+           <span class="follow"><a href="#">Follow</a></span>
+           <span class="close mt-2"><a href="#"><img src="../../assets/svg(s)//Closesvg.png" alt=""></a></span><br>
+           <span class="follow mt-0">Lives in Rajasthan,India.</span>
+           <span class="follow">February 15</span>
+           <div class="question mt-3">
+              <a href="#">Why does my JavaScript code receive a "No 'Access-Control-Allow-Origin' header is present on?</a>
+           </div>
+           <div class="info">
+            Mod note: This question is about why Postman is not subject to CORS restrictions in the same way an XMLHttpRequest is. … I know that the API or remote resource must set the header, but why did it work when I made the request via the Chrome extension Postman?
+           </div>
+           <div class="bottom">
+             <a href="#"><img src="../../assets/svg(s)/up.png" alt="like"></a><span>7.4K</span>
+             <a href="#"><img src="../../assets/svg(s)/down.png" alt="dislike"></a>
+             <a class="ml-4" href="#"><img src="../../assets/svg(s)/share.png" alt="share"></a><span class="ml-2 mr-4">21</span>
+             <a href="#"><img src="../../assets/svg(s)/send.png" alt="share"></a>
+             <!-- <span><a href="#"><img src="../../assets/svg(s)/more.png" alt="more"></a></span> -->
+             <mat-accordion>
+              <mat-expansion-panel hideToggle class="expansiontittle">
+                <mat-expansion-panel-header class="expansiontittle">
+                  <mat-panel-title class="expansiontittle">
+                    Give a bettter answer
+                  </mat-panel-title >
+                </mat-expansion-panel-header>
+                <div>
+                  <div class="answered"  >
+                    <div class="container Heading shadow-sm p-3 bg-body rounded mt-3">
+                      <span class="username"><img src="../../assets/svg(s)/users.png" width="30"  alt="userimg">Aryan Kapoor .</span>
+                    </div>
+                    <div class="customfont Heading containern shadow-sm p-3 bg-body rounded ">
+                      <a href="#"><img src="../../assets/svg(s)/bold.svg" width="20" class="mr-3" alt="bold"></a>
+                      <a href="#"><img src="../../assets/svg(s)/italic.svg" width="20" class="mr-3" alt="italic"></a>
+                      <!-- <a href="#"><img src="../../assets/svg(s)/ol.svg" width="20" class="mr-4" alt="ordered list"></a> -->
+                      <a href="#"><img src="../../assets/svg(s)/ul.svg" width="23" class="mr-2" alt="unordered list"></a>
+                      <span ml-auto>
+                        <a href="#"><img src="../../assets/svg(s)/photo.svg" width="23" alt=""></a>
+                      </span>
+                    </div>
+                    <div class="inputans">
+                      <mat-form-field class="ansfield">
+                        <textarea matInput name="answerText" class="answerText"  rows="3" placeholder="Write Answer" ></textarea>
+                      </mat-form-field>
+                      <button type="submit" class="postbtn" mat-stroked-button >Post</button>
+                      <button type="button" class="draftbtn mt-2" mat-stroked-button >Save Draft</button>
+
+
+                    </div>
+                  </div>
+                </div>
+               </mat-expansion-panel>
+             </mat-accordion>
+           </div>
+        </div>
+        <div class="container Heading shadow-sm p-3 bg-body rounded ">
+           <span class="username"><img src="../../assets/svg(s)/users.png" width="30"  alt="userimg">Aryan Kapoor .</span>
+           <span class="follow"><a href="#">Follow</a></span>
+           <span class="close mt-2"><a href="#"><img src="../../assets/svg(s)//Closesvg.png" alt=""></a></span><br>
+           <span class="follow mt-0">Lives in Rajasthan,India.</span>
+           <span class="follow">February 15</span>
+           <div class="question mt-3">
+              <a href="#">Why does my JavaScript code receive a "No 'Access-Control-Allow-Origin' header is present on?</a>
+           </div>
+           <div class="info">
+            Mod note: This question is about why Postman is not subject to CORS restrictions in the same way an XMLHttpRequest is. … I know that the API or remote resource must set the header, but why did it work when I made the request via the Chrome extension Postman?
+           </div>
+           <div class="bottom">
+             <a href="#"><img src="../../assets/svg(s)/up.png" alt="like"></a><span>7.4K</span>
+             <a href="#"><img src="../../assets/svg(s)/down.png" alt="dislike"></a>
+             <a class="ml-4" href="#"><img src="../../assets/svg(s)/share.png" alt="share"></a><span class="ml-2 mr-4">21</span>
+             <a href="#"><img src="../../assets/svg(s)/send.png" alt="share"></a>
+             <!-- <span><a href="#"><img src="../../assets/svg(s)/more.png" alt="more"></a></span> -->
+             <mat-accordion>
+              <mat-expansion-panel hideToggle class="expansiontittle">
+                <mat-expansion-panel-header class="expansiontittle">
+                  <mat-panel-title class="expansiontittle">
+                    Give a bettter answer
+                  </mat-panel-title >
+                </mat-expansion-panel-header>
+                <div>
+                  <div class="answered"  >
+                    <div class="container Heading shadow-sm p-3 bg-body rounded mt-3">
+                      <span class="username"><img src="../../assets/svg(s)/users.png" width="30"  alt="userimg">Aryan Kapoor .</span>
+                    </div>
+                    <div class="customfont Heading containern shadow-sm p-3 bg-body rounded ">
+                      <a href="#"><img src="../../assets/svg(s)/bold.svg" width="20" class="mr-3" alt="bold"></a>
+                      <a href="#"><img src="../../assets/svg(s)/italic.svg" width="20" class="mr-3" alt="italic"></a>
+                      <!-- <a href="#"><img src="../../assets/svg(s)/ol.svg" width="20" class="mr-4" alt="ordered list"></a> -->
+                      <a href="#"><img src="../../assets/svg(s)/ul.svg" width="23" class="mr-2" alt="unordered list"></a>
+                      <span ml-auto>
+                        <a href="#"><img src="../../assets/svg(s)/photo.svg" width="23" alt=""></a>
+                      </span>
+                    </div>
+                    <div class="inputans">
+                      <mat-form-field class="ansfield">
+                        <textarea matInput name="answerText" class="answerText"  rows="3" placeholder="Write Answer" ></textarea>
+                      </mat-form-field>
+                      <button type="submit" class="postbtn" mat-stroked-button >Post</button>
+                      <button type="button" class="draftbtn mt-2" mat-stroked-button >Save Draft</button>
+
+
+                    </div>
+                  </div>
+                </div>
+               </mat-expansion-panel>
+             </mat-accordion>
+           </div>
+        </div>
+        <div class="container Heading shadow-sm p-3 bg-body rounded ">
+           <span class="username"><img src="../../assets/svg(s)/users.png" width="30"  alt="userimg"> Aryan Kapoor .</span>
+           <span class="follow"><a href="#">Follow</a></span>
+           <span class="close mt-2"><a href="#"><img src="../../assets/svg(s)//Closesvg.png" alt=""></a></span><br>
+           <span class="follow mt-0">Lives in Rajasthan,India.</span>
+           <span class="follow">February 15</span>
+           <div class="question mt-3">
+              <a href="#">Why does my JavaScript code receive a "No 'Access-Control-Allow-Origin' header is present on?</a>
+           </div>
+           <div class="info">
+            Mod note: This question is about why Postman is not subject to CORS restrictions in the same way an XMLHttpRequest is. … I know that the API or remote resource must set the header, but why did it work when I made the request via the Chrome extension Postman?
+           </div>
+           <div class="bottom">
+             <a href="#"><img src="../../assets/svg(s)/up.png" alt="like"></a><span>7.4K</span>
+             <a href="#"><img src="../../assets/svg(s)/down.png" alt="dislike"></a>
+             <a class="ml-4" href="#"><img src="../../assets/svg(s)/share.png" alt="share"></a><span class="ml-2 mr-4">21</span>
+             <a href="#"><img src="../../assets/svg(s)/send.png" alt="share"></a>
+             <!-- <span><a href="#"><img src="../../assets/svg(s)/more.png" alt="more"></a></span> -->
+             <mat-accordion>
+              <mat-expansion-panel hideToggle class="expansiontittle">
+                <mat-expansion-panel-header class="expansiontittle">
+                  <mat-panel-title class="expansiontittle">
+                    Give a bettter answer
+                  </mat-panel-title >
+                </mat-expansion-panel-header>
+                <div>
+                  <div class="answered"  >
+                    <div class="container Heading shadow-sm p-3 bg-body rounded mt-3">
+                      <span class="username"><img src="../../assets/svg(s)/users.png" width="30"  alt="userimg">Aryan Kapoor .</span>
+                    </div>
+                    <div class="customfont Heading containern shadow-sm p-3 bg-body rounded ">
+                      <a href="#"><img src="../../assets/svg(s)/bold.svg" width="20" class="mr-3" alt="bold"></a>
+                      <a href="#"><img src="../../assets/svg(s)/italic.svg" width="20" class="mr-3" alt="italic"></a>
+                      <!-- <a href="#"><img src="../../assets/svg(s)/ol.svg" width="20" class="mr-4" alt="ordered list"></a> -->
+                      <a href="#"><img src="../../assets/svg(s)/ul.svg" width="23" class="mr-2" alt="unordered list"></a>
+                      <span ml-auto>
+                        <a href="#"><img src="../../assets/svg(s)/photo.svg" width="23" alt=""></a>
+                      </span>
+                    </div>
+                    <div class="inputans">
+                      <mat-form-field class="ansfield">
+                        <textarea matInput name="answerText" class="answerText"  rows="3" placeholder="Write Answer" ></textarea>
+                      </mat-form-field>
+                      <button type="submit" class="postbtn" mat-stroked-button >Post</button>
+                      <button type="button" class="draftbtn mt-2" mat-stroked-button >Save Draft</button>
+
+
+                    </div>
+                  </div>
+                </div>
+               </mat-expansion-panel>
+             </mat-accordion>
+           </div>
+        </div>
+    </div>
+
+    <!-- Right portion started here  -->
+
+    <div class="col-3 col shadow p-3 mb-5 bg-body rounded righttable">
+      <div class="container Heading pt-2 shadow-sm p-3  bg-body rounded">
+        <p><a href="#">Improve you Acount</a></p>
+      </div>
+     <!-- <table class="tablebox"> -->
+         <div class="container-fluid Heading shadow-sm bg-body rounded box btndiv">
+           <!-- <tr><a href="#">Follow interesting Peoples.</a></tr> -->
+           <button mat-button class="btn-block">Follow interesting Peoples</button>
+         </div>
+         <div class="container-fluid Heading shadow-sm bg-body rounded btndiv">
+           <!-- <tr><a routerLink="/addque">Ask a Question</a> -->
+           <button mat-button (click)="openDialogue()" class="btn-block">Ask a question</button>
+
+         </div>
+         <div class="container-fluid Heading shadow-sm bg-body rounded btndiv">
+           <!-- <tr><a routerLink="/answer">Answer a Question</a></tr> -->
+           <button mat-button class="btn-block">Answer a Question</button>
+         </div>
+        <!-- </table> -->
+        <div class="container Heading pt-2 shadow-sm p-3 mt-4 bg-body rounded">
+          <p><a href="#">Links to Follow</a></p>
+        </div>
+        <table class="tablebox">
+          <div class="container-fluid Heading shadow-sm bg-body rounded box">
+            <tr><a href="#">Our Teachers on Udemy</a></tr>
+          </div>
+          <div class="container-fluid Heading shadow-sm bg-body rounded">
+            <tr><a href="#">Improve Communication skills</a>
+            </tr>
+          </div>
+          <div class="container-fluid Heading shadow-sm bg-body rounded">
+            <tr><a href="#">Learn MS Excel</a></tr>
+          </div>
+          <div class="container-fluid Heading shadow-sm bg-body rounded">
+            <tr><a href="#">Stock Investment Ideas</a></tr>
+          </div>
+          <div class="container-fluid Heading shadow-sm bg-body rounded">
+            <tr><a href="#">Learn MEAN Stack</a></tr>
+          </div>
+         </table>
+      </div>
+  </div>
+</div>
+<app-footer></app-footer>
+
+</body>
+</html>

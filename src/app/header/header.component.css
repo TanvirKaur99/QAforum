@@ -1,0 +1,9 @@
+.hover1 li:hover{
+  font-size: 1rem !important;
+  font-weight: 500;
+  background-color: azure;
+  transition: all 0.3s;
+}
+.hover1{
+  color: black;
+}

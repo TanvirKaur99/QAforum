@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Orelega+One&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class=" mainbox mx-auto ">
+    <!-- mt-5 shadow-lg p-3 mb-5 bg-body rounded -->
+    <div  class="mx-auto mt-2 heading">Add question</div>
+    <div class="container tips mt-5 pt-2 shadow-sm  bg-body rounded">
+      <p>Tips for getting good answers quickly</p>
+      <ul>
+        <li>
+         Make sure your question has not been asked already
+        </li>
+        <li>
+         Keep your question short and to the point
+        </li>
+        <li>
+         Double-check grammar and spelling
+        </li>
+      </ul>
+     </div>
+     <div class="container pl-4 ">
+       <span class="username"><img src="../../assets/svg(s)/users.png" width="25"  alt="userimg">Aryan Kapoor</span>
+       <!-- <span> asked to</span> -->
+       <!-- <select class="form-select form-select-sm to" aria-label=".form-select-sm example">
+         <option selected>Public</option>
+         <option value="1">Anonyms</option>
+         <option value="2">Limited</option>
+
+       </select><br><br> -->
+      <form action="#">
+       <mat-form-field  >
+         <mat-label> Category of question</mat-label>
+         <mat-select >
+           <!-- <mat-option *ngFor="let food of foods" [value]="food.value">
+             {{food.viewValue}}
+           </mat-option> -->
+        <mat-option value="education">Education</mat-option>
+        <mat-option value="sports">Sports</mat-option>
+        <mat-option value="music">Music</mat-option>
+        <mat-option value="travelling">Travelling</mat-option>
+         </mat-select>
+       </mat-form-field>
+       <mat-form-field class="que">
+         <input matInput placeholder="Write your question here." >
+       </mat-form-field>
+       <mat-form-field class="que">
+         <input matInput placeholder="About your question(in detail)" >
+       </mat-form-field>
+       <button mat-raised-button class="subutton" type="submit">Submit</button>
+      </form>
+     </div>
+   </div>
+
+</body>
+</html>
+

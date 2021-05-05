@@ -1,0 +1,154 @@
+ <mat-card class="center">
+<div>
+   <p class=" well text-center para1">Contact</p>
+ </div>
+  <div>
+    <p class=" well text-center para2">"Share your Knowledge.It's a way to achieve immortality"-"Dalai Lamma"</p>
+
+  </div>
+  <div class="center1">
+  <p>
+  At QA we are always looking forward to hear from you. Share your experience with us.Tell us we are doing right
+  and we need to improve upon. Contact us if you have faced a problem,  or  something has not worked the way it was
+  supposed to. We are all ears. Let us know if you come across something that needs correction or information that
+  needs to be updated.We will do our best to help
+ </p>
+ </div>
+</mat-card>
+
+<!--
+ contact form starts from here -->
+ <div>
+<mat-card class="center">
+  <mat-toolbar>
+    <span class="title-center">CONTACT</span>
+  </mat-toolbar>
+  <form name="form" #userform="ngForm"(ngSubmit)="userform.form.valid && getValues(userform)" novalidate>
+      this is firstname field
+     <mat-form-field>
+      <input
+      type="text"
+      matInput
+      placeholder=" Enter Your FirstName"
+      required
+      [(ngModel)]="model.username"
+      name="username"
+      #fusername="ngModel"
+      minlength="5"
+      [ngClass]="{'is-invalid':userform.submitted && fusername.invalid}">
+    </mat-form-field>
+    <br>
+
+
+    <mat-error *ngIf="userform.submitted && fusername.invalid">
+    <mat-error *ngIf="fusername.errors?.required">
+     firstName should be entered
+    </mat-error>
+
+
+    </mat-error>
+    <br>
+
+      firstname field ends
+
+      email field starts
+      <mat-form-field>
+        <input type="text"
+        matInput
+        placeholder="Enter Your Email"
+        name="useremail"
+        #useremail="ngModel"
+        [(ngModel)]="model.useremail"
+        email
+        required
+        [ngClass]="{'is-invalid':userform.submitted && useremail.invalid}"
+        >
+      </mat-form-field>
+
+      <br>
+
+      <mat-error *ngIf="userform.submitted && useremail.invalid">
+        <mat-error *ngIf="useremail.errors?.required">
+          mail should be entered
+        </mat-error>
+
+        <mat-error *ngIf="useremail.errors?.email;">
+          should be in mail format
+        </mat-error>
+        </mat-error>
+
+  <br>
+      useremail ends
+
+
+      purpose field starts
+      <mat-form-field>
+        <mat-select
+        placeholder="Select purpose"
+        name="purpose"
+        #purpose="ngModel"
+        [(ngModel)]="model.purpose"
+        required
+        [ngClass]="{'is-invalid':userform.submitted && purpose.invalid}">
+        <mat-option value="feedback">Feedback</mat-option>
+        <mat-option value="suggestions">Suggestions</mat-option>
+        <mat-option value="correction">Correction Required</mat-option>
+        <mat-option value="query">General Query</mat-option>
+       </mat-select>
+      </mat-form-field>
+
+      <br>
+
+      <mat-error *ngIf="userform.submitted && purpose.invalid">
+        <mat-error *ngIf="purpose.errors?.required">
+          please select the profile
+        </mat-error>
+      </mat-error>
+
+    <br>
+    purpose field ends
+
+
+     share details text area starts here
+     <mat-form-field>
+      <textarea matInput
+      placeholder="Enter your address"
+      [(ngModel)]="model.share"
+      name="share"
+      #share="ngModel"
+      required
+      minlength="5"
+      [ngClass]="{'is-invalid':userform.submitted && share.invalid}">
+       </textarea>
+    </mat-form-field>
+
+    <br>
+
+    <mat-error *ngIf="userform.submitted && share.invalid">
+      <mat-error *ngIf="share.errors?.required">
+        address should be entered
+      </mat-error>
+
+      <mat-error *ngIf="share.errors?.minlength">
+        address should be greater than 5 character length
+      </mat-error>
+      </mat-error>
+      <br>
+      share details ends here
+
+      submit button starts
+      <button type="submit"
+      mat-raised-button color="primary"><mat-icon>menu</mat-icon>Submit</button>
+      submit button ends here
+
+    </form>
+  <br><br>
+
+</mat-card>
+</div>
+contact form ends here
+
+
+
+
+

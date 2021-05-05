@@ -1,0 +1,63 @@
+.border{
+  border-color: black;
+}
+.para{
+  font-weight: bold;
+}
+.hover1 li:hover{
+  font-size: 1rem !important;
+  font-weight: 500;
+  background-color: azure;
+  transition: all 0.3s;
+}
+.hover1{
+  color: black;
+}
+.text-center{
+  background-color: #d4e8ed;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 390px;
+}
+.example-full-width {
+  width: 100%;
+  font-weight: bold;
+}
+.align{
+  margin-top:10px;
+  font-weight:bold;
+  font-size: medium;
+}
+.topright {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+  font-size: 18px;
+}
+.icondesign{
+  font-size: 26px;
+}
+hr.new1 {
+  border-top: 1px thick;
+  color: black;
+}
+a.myanchor{
+  color: black;
+  /* background-color: aqua; */
+}
+a.myanchor:hover{
+  text-decoration: underline;
+}
+.mat-tab-group {
+  margin-bottom: 48px;
+}
+
+
+
+
+
+
+
+
+
+

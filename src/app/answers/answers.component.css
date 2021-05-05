@@ -1,0 +1,94 @@
+/* .col{ */
+  /* border: 1px solid black; */
+/* } */
+ul li.sidenav{
+  margin-bottom:15px;
+  text-decoration: none !important;
+  color: black !important;
+}
+.greyleft li a{
+  color: gray;
+}
+.Heading{
+  border: 1px solid #ccccb3;
+  background-color: white;
+  margin-bottom: 0.6rem;
+  /* box-shadow: 5px 10px #888888; */
+}
+.Heading p{
+  color: #002d5b  ;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+.Heading p a{
+  color: #002d5b  ;
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+.Heading p a:hover{
+  color: #46637c  ;
+  font-weight: bold;
+  font-size: 1.6rem;
+}
+/* choose here */
+span.username{
+  color: #282829;
+  font-weight: bold;
+}
+span.follow{
+color: #636466;
+font-size: 0.8rem;
+}
+span.answerinfo{
+  color: #939598;
+  font-size: 0.8rem;
+  font-weight: bolder;
+}
+span.close{
+  margin-left: auto;
+}
+span.dislike{
+  margin-left: auto;
+}
+.question a{
+  color: #282829;
+  font-weight: bold;
+}
+.rightbottom{
+  display: inline;
+  float: right;
+  /* border: 1px solid red; */
+}
+textarea.answerText,
+.ansfield{
+  /* border: 1px solid rebeccapurple; */
+  width: 100%;
+}
+button.postbtn{
+  width: 100%;
+  color: white;
+  background-color: #002d5b;
+}
+button.draftbtn{
+  width: 100%;
+
+}
+
+/* right portion */
+.tablebox{
+  width: 100%;
+}
+.tablebox div tr a {
+  text-decoration: none;
+  color: #282829;
+}
+.topics{
+  border: 1px solid #ccccb3;
+  background-color: white;
+  margin-bottom: 0.6rem;
+  color: #808080;
+}
+button.topicbtn{
+  width: 100%;
+}
