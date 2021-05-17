@@ -1,11 +1,30 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User,loginUser} from './user.model';//front end
+import{Addcredentials} from './addcredentials.model';
+import{Answer} from './answer.model';
+import{PostQue} from './post-que.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+
+//   credentialdata:any=[];
+//   cred:any=[];
+
+
+//   credentialsdata(){
+//   this.displaycredentials(this.getuserId()).subscribe((res)=>{
+//     this.credentialdata=res;
+//     this.cred=this.credentialdata.data;
+//     console.log(this.cred);
+// }
+// ,(err)=>{
+// console.log(err);
+
+// })
+//   }
 
   public newUser : User={
     name:'',
@@ -20,6 +39,48 @@ export class UserService {
     email:'',
     password:''
   }
+
+  public newQuePost:PostQue={
+    question:'',
+    category:'',
+    about:'',
+    user:this.getuserId()
+
+
+  }
+
+  public answers:Answer={
+    answer:'',
+    questionid:'',
+    // questionid:this.que[0]._id,
+    userid:this.getuserId()
+  };
+
+
+  // public addcred:Addcredentials={
+  //   location:this.cred.location,
+  //   profile:this.cred.profile,
+  //   education:this.cred.education,
+  //   dateofbirth:this.cred.dateofbirth,
+  //   workexperience:this.cred.workexperience,
+  //   address:this.cred.address,
+  //   user:this.getuserId()
+  // };
+
+
+
+  public addcred:Addcredentials={
+      location:'',
+      profile:'',
+      education:'',
+      dateofbirth:'',
+      workexperience:'',
+      address:'',
+      user:this.getuserId()
+    };
+
+
+
 
   constructor(private http:HttpClient) { }
 
@@ -39,6 +100,34 @@ export class UserService {
   display(id:any){
     return this.http.get('http://localhost:3000/userinfo/'+id);
   }
+
+  addcredentials(credentials:Addcredentials){
+    return this.http.post('http://localhost:3200/addcred', credentials);
+  }
+
+  displaycredentials(id:any){
+    return this.http.get('http://localhost:3200/displaycred/'+id);
+  }
+
+
+
+  addQuePost(quepost:PostQue)
+  {
+    return this.http.post('http://localhost:3000/addnewQuepost',quepost);
+  }
+
+  displayQPost(id:any)
+  {
+    return this.http.get('http://localhost:3000/displayQuepost/'+id);
+  }
+
+
+addanswer(answers:Answer){
+  return this.http.post('http://localhost:3200/addans',answers);
+};
+
+
+
 
 //to store the token after login
 

@@ -11,8 +11,8 @@
 <body>
   <div class=" mainbox mx-auto ">
     <!-- mt-5 shadow-lg p-3 mb-5 bg-body rounded -->
-    <div  class="mx-auto mt-2 heading">Add question</div>
-    <div class="container tips mt-5 pt-2 shadow-sm  bg-body rounded">
+    <div  class="mx-auto mt-4 heading">Add Question</div>
+    <div class="container tips mt-4 pt-2 shadow-sm  bg-body rounded ">
       <p>Tips for getting good answers quickly</p>
       <ul>
         <li>
@@ -26,39 +26,62 @@
         </li>
       </ul>
      </div>
-     <div class="container pl-4 ">
-       <span class="username"><img src="../../assets/svg(s)/users.png" width="25"  alt="userimg">Aryan Kapoor</span>
+     <div class="container pl-4 divw">
+       <span class="username ml-4 text-cap"><img src="../../assets/assets/img/icon/userimg.jpg" width="25"  alt="userimg">{{userinfo.firstname}} {{userinfo.lastname}}</span>
        <!-- <span> asked to</span> -->
        <!-- <select class="form-select form-select-sm to" aria-label=".form-select-sm example">
          <option selected>Public</option>
          <option value="1">Anonyms</option>
          <option value="2">Limited</option>
+       </select>-->
+       <br><br>
 
-       </select><br><br> -->
-      <form action="#">
-       <mat-form-field  >
+
+      <form action="#" class="ml-4" #questionform="ngForm" (ngSubmit)="onadd(questionform)">
+        <input
+        type="hidden"
+        name="user"
+        #user="ngModel"
+        [(ngModel)]="userservice.newQuePost.user"
+
+        >
+
+       <mat-form-field class="matwidth" >
          <mat-label> Category of question</mat-label>
-         <mat-select >
-           <!-- <mat-option *ngFor="let food of foods" [value]="food.value">
-             {{food.viewValue}}
-           </mat-option> -->
-        <mat-option value="education">Education</mat-option>
-        <mat-option value="sports">Sports</mat-option>
-        <mat-option value="music">Music</mat-option>
-        <mat-option value="travelling">Travelling</mat-option>
-         </mat-select>
+         <mat-select
+         name="category"
+        #category="ngModel"
+        [(ngModel)]="userservice.newQuePost.category"
+         >
+           <mat-option value="Music">Music</mat-option>
+           <mat-option value="Education">Education</mat-option>
+           <mat-option value="Sports">Sports</mat-option>
+           <mat-option value="Technical">Technical</mat-option>
+
+     </mat-select>
+
+    </mat-form-field>
+
+
+       <mat-form-field class="matwidth">
+         <input matInput placeholder="Write your question here."
+         name="question"
+        #question="ngModel"
+        [(ngModel)]="userservice.newQuePost.question" >
        </mat-form-field>
-       <mat-form-field class="que">
-         <input matInput placeholder="Write your question here." >
+
+
+       <mat-form-field class="matwidth">
+         <input matInput placeholder="About your question(in detail)"
+         name="about"
+        #about="ngModel"
+        [(ngModel)]="userservice.newQuePost.about">
        </mat-form-field>
-       <mat-form-field class="que">
-         <input matInput placeholder="About your question(in detail)" >
-       </mat-form-field>
-       <button mat-raised-button class="subutton" type="submit">Submit</button>
+
+       <button mat-raised-button class="subutton mt-2 mb-3 " type="submit">Submit</button>
       </form>
      </div>
    </div>
 
 </body>
 </html>
-

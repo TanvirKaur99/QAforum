@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+//import { from } from 'rxjs';
 import { AddQuestionComponent } from './add-question/add-question.component';
 import { AnswersComponent } from './answers/answers.component';
 import { ContactComponent } from './contact/contact.component';
@@ -9,6 +10,10 @@ import { LoginComponent } from './login/login.component';
 import { QuestionsComponent } from './questions/questions.component';
 import { RegisterComponent } from './register/register.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+
+
+import{AuthGuard} from './shared/auth.guard';
+import { AddcredentialsComponent } from './addcredentials/addcredentials.component';
 
 const routes: Routes = [
   {
@@ -25,7 +30,8 @@ const routes: Routes = [
   },
   {
     path:'questions',
-    component:QuestionsComponent
+    component:QuestionsComponent,
+    canActivate:[AuthGuard],
   },
   {
     path:'help',
@@ -41,13 +47,20 @@ const routes: Routes = [
   },
   {
     path:'addQuestion',
-    component:AddQuestionComponent
+    component:AddQuestionComponent,
+    canActivate:[AuthGuard],
   },
   {
     path:'userprofile',
     component:UserProfileComponent
 
+  },
+  {
+    path:'addCredentials',
+    component:AddcredentialsComponent
+
   }
+
 
 ];
 

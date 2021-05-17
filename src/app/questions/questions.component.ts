@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { UserService } from '../shared/user.service';
+
+import { MatDialog } from '@angular/material/dialog';
+import { AddQuestionComponent} from '../add-question/add-question.component';
 
 @Component({
   selector: 'app-questions',
@@ -9,14 +10,16 @@ import { UserService } from '../shared/user.service';
 })
 export class QuestionsComponent implements OnInit {
 
-  constructor(private router:Router,
-    public userSer:UserService) { }
+   constructor(public dialog:MatDialog) { }
+
 
   ngOnInit(): void {
-     console.log(this.userSer.getToken()); //to check token stored or not
   }
   openDialogue(){
-    this.router.navigateByUrl('/addQuestion')
+    const dialogref = this.dialog.open(AddQuestionComponent)
   }
+
+
+
 
 }

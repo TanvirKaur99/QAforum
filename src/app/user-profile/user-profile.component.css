@@ -1,63 +1,215 @@
-.border{
-  border-color: black;
+/* .border{
+  border: 1px solid black;
+} */
+/* .addcreden a{
+  font-size: 0.7rem;
+  color: #939598;
 }
-.para{
-  font-weight: bold;
-}
-.hover1 li:hover{
-  font-size: 1rem !important;
-  font-weight: 500;
-  background-color: azure;
-  transition: all 0.3s;
-}
-.hover1{
-  color: black;
-}
-.text-center{
-  background-color: #d4e8ed;
-  text-align: center;
-  vertical-align: middle;
-  line-height: 390px;
-}
-.example-full-width {
+.borderit{
+  border: 1px solid red;
+}*/
+.answerText,
+.ansfield {
   width: 100%;
+}
+/* .example-stretched-tabs{
+  max-width: 20px;
+} */
+/* .belowdiv{ */
+  /* max-height: 500px; */
+  /* min-height: 200px; */
+  /* border: 1px solid red;
+ } */
+
+
+
+/* .col{ */
+  /* border: 1px solid black; */
+/* } */
+/* ul li.sidenav{
+  margin-bottom:15px;
+  text-decoration: none !important;
+  color: black !important;
+}
+.greyleft li a{
+  color: gray;
+}
+.Heading{
+  border: 1px solid #ccccb3;
+  background-color: white;
+  margin-bottom: 0.6rem; */
+  /* box-shadow: 5px 10px #888888; */
+/* }
+.Heading p{
+  color: #002d5b  ;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+.Heading p a{
+  color: #002d5b  ;
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+.Heading p a:hover{
+  color: #46637c  ;
+  font-weight: bold;
+  font-size: 1.6rem;
+} */
+/* choose here */
+ span.username{
+  color: #282829;
   font-weight: bold;
 }
-.align{
-  margin-top:10px;
-  font-weight:bold;
-  font-size: medium;
+span.follow{
+color: #636466;
+font-size: 0.8rem;
 }
-.topright {
+span.answerinfo{
+  color: #939598;
+  font-size: 0.8rem;
+  font-weight: bolder;
+}
+span.close{
+  margin-left: auto;
+}
+/*
+.question a{
+  color: #282829;
+  font-weight: bold;
+} */
+ .rightbottom{
+  display: inline;
+  float: right;
+  /* border: 1px solid red; */
+ }
+textarea.answerText,
+.ansfield{
+  /* border: 1px solid rebeccapurple; */
+   width: 100%;
+}
+button.postbtn{
+  width: 100%;
+  color: white;
+  background-color: #002d5b;
+}
+button.draftbtn{
+  width: 100%;
+
+}
+span.dislike{
+  margin-left: auto;
+}
+
+/* right portion */
+/* .tablebox{
+  width: 100%;
+}
+.tablebox div tr a {
+  text-decoration: none;
+  color: #282829;
+}
+.topics{
+  border: 1px solid #ccccb3;
+  background-color: white;
+  margin-bottom: 0.6rem;
+  color: #808080;
+} */
+/* button.topicbtn{
+  width: 100%;
+} */
+body{
+  background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+}
+.emp-profile{
+  padding: 3%;
+  margin-top: 3%;
+  margin-bottom: 3%;
+  border-radius: 0.5rem;
+  background: #fff;
+}
+.profile-img{
+  text-align: center;
+}
+.profile-img img{
+  width: 70%;
+  height: 100%;
+}
+.profile-img .file {
+  position: relative;
+  overflow: hidden;
+  margin-top: -20%;
+  width: 70%;
+  border: none;
+  border-radius: 0;
+  font-size: 15px;
+  background: #212529b8;
+}
+.profile-img .file input {
   position: absolute;
-  top: 8px;
-  right: 16px;
-  font-size: 18px;
+  opacity: 0;
+  right: 0;
+  top: 0;
 }
-.icondesign{
-  font-size: 26px;
+.profile-head h5{
+  color: #333;
 }
-hr.new1 {
-  border-top: 1px thick;
-  color: black;
+.profile-head h6{
+  color: #0062cc;
 }
-a.myanchor{
-  color: black;
-  /* background-color: aqua; */
+.profile-edit-btn{
+  border: none;
+  border-radius: 1.5rem;
+  width: 70%;
+  padding: 2%;
+  font-weight: 600;
+  color: #6c757d;
+  cursor: pointer;
 }
-a.myanchor:hover{
-  text-decoration: underline;
+.proile-rating{
+  font-size: 12px;
+  color: #818182;
+  margin-top: 5%;
 }
-.mat-tab-group {
-  margin-bottom: 48px;
+.proile-rating span{
+  color: #495057;
+  font-size: 15px;
+  font-weight: 600;
 }
-
-
-
-
-
-
-
-
-
-
+.profile-head .nav-tabs{
+  margin-bottom:5%;
+}
+.profile-head .nav-tabs .nav-link{
+  font-weight:600;
+  border: none;
+}
+.profile-head .nav-tabs .nav-link.active{
+  border: none;
+  border-bottom:2px solid #0062cc;
+}
+.profile-work{
+  padding: 14%;
+  margin-top: -15%;
+}
+.profile-work p{
+  font-size: 12px;
+  color: #818182;
+  font-weight: 600;
+  margin-top: 10%;
+}
+.profile-work a{
+  text-decoration: none;
+  color: #495057;
+  font-weight: 600;
+  font-size: 14px;
+}
+.profile-work ul{
+  list-style: none;
+}
+.profile-tab label{
+  font-weight: 600;
+}
+.profile-tab p{
+  font-weight: 600;
+  color: #0062cc;
+}

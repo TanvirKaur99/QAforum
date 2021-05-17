@@ -1,9 +1,22 @@
-.hover1 li:hover{
-  font-size: 1rem !important;
-  font-weight: 500;
-  background-color: azure;
-  transition: all 0.3s;
+.btncolor{
+  border: 2px solid orangered;
+
 }
-.hover1{
+.butn{
+  width: 10px !important;
+}
+
+.hover1 li:hover{
+
+  transition: all 0.3s;
+  /* text-shadow: 2px 2px 5px red; */
+}
+.hover1 li a{
   color: black;
+}
+.hover1 li a:hover{
+  color: orangered;
+  font-size: 1rem  !important;
+  font-weight: 500;
+
 }

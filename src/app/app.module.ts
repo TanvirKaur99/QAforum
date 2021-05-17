@@ -26,6 +26,9 @@ import { HttpClientModule } from '@angular/common/http';
 import{FormsModule} from '@angular/forms';
 //material modules
 import{MaterialModule} from './material.module';
+import { LogoutComponent } from './logout/logout.component';
+import { EditprofileComponent } from './editprofile/editprofile.component';
+import { AddcredentialsComponent } from './addcredentials/addcredentials.component';
 
 
 @NgModule({
@@ -46,7 +49,10 @@ import{MaterialModule} from './material.module';
     HelpComponent,
     UserProfileComponent,
     AnswersComponent,
-    AddQuestionComponent
+    AddQuestionComponent,
+    LogoutComponent,
+    EditprofileComponent,
+    AddcredentialsComponent
   ],
   imports: [
     BrowserModule,
