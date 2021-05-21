@@ -14,9 +14,13 @@ export class LogoutComponent implements OnInit {
   ngOnInit(): void {
 
     this.userservice.deleteToken();
-this.userservice.deleteuserId();
-this.router.navigateByUrl('/login');
-console.log("token deleted successfully");
+
+    this.userservice.deleteuserId();
+
+     this.router.navigateByUrl('/login');
+
+     console.log("token deleted successfully");
+
   }
 
 }

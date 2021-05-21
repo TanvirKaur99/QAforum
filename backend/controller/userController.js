@@ -1,7 +1,7 @@
 require('../model/registerModel');
 require('../config/passportConfig');
 require('../model/postQuesModel');//import postQuesModel
-require('../model/addcredModel');//AddCredentials Model 
+require('../model/addcredModel');//AddCredentials Model
 require('../model/answerModel');
 
 
@@ -14,7 +14,7 @@ const jwt = require('jsonwebtoken');
 var UserData=mongoose.model('userRegister');//UserData object created for userRegister Model
 var newQuePost=mongoose.model('QPost');//newPost is the reference to the Qpost Model
 var credData=mongoose.model('addcredentials');
-var ansData=mongoose.model('answer'); 
+var ansData=mongoose.model('answer');
 
 //Function for Adding new user or register a user
 module.exports.addnew=(req,res)=>{
@@ -28,7 +28,7 @@ module.exports.addnew=(req,res)=>{
         return res.status(200).json({
             message:'Data inserted successfully',
             success:true,
-            data:docs 
+            data:docs
         })
     })
     .catch((err)=>{
@@ -68,7 +68,7 @@ module.exports.selectedUser=(req,res)=>{
          success:false,
          message:'User not found',
          error:err.message
-    
+
        })
       })
     }
@@ -117,16 +117,16 @@ module.exports.displaycredentials=(req,res)=>{
 })
 })
 }
-    // for adding a new question  Post
-    
+    //for adding a new question  Post
+
   module.exports.addnewQuePost=(req,res)=>{
     var myQpost=new newQuePost({
       question:req.body.question,
       category:req.body.category,
-      about:req.body.about,   
+      about:req.body.about,
       user:req.body.user
     });
-  
+
       myQpost.save().then((docs)=>{
         return res.status(200).json({
           success:true,
@@ -167,8 +167,12 @@ module.exports.addanswers=(req,res)=>{
     answer:req.body.answer,
     questionid:req.body.questionid,
     userid:req.body.userid
+
+
   });
+    console.log(answer)
   myanswer.save().then((docs)=>{
+    console.log(docs);
  return res.status(200).json({
   success:true,
   message:'new answer added',
@@ -201,3 +205,25 @@ module.exports.displayanswer=(req,res)=>{
 })
 })
 }
+
+//for updating user
+module.exports.updatedData=(req,res)=>{
+
+  var updatedData = req.body;
+  UserData.findByIdAndUpdate({_id:req.params.id},{$set:updatedData},{new:true})
+  .then((docs)=>{
+      return res.status(200).json({
+          success:true,
+          message:'Data updated',
+          data:docs
+      })
+
+          }).catch((err)=>{
+              return res.status(401).json({
+                  success:false,
+                  message:'Error in updating data',
+                  err:err.message
+      })
+  })
+}
+

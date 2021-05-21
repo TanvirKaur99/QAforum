@@ -32,8 +32,8 @@ export class LoginComponent implements OnInit {
      this.userservice.setToken(this.userdata.token);//store token in response
      this.userservice.setuserId(this.userdata.user._id);//store userid in response
      alert('Login successfully')
-    //this.router.navigateByUrl('/questions');
-     this.router.navigateByUrl('/userprofile');
+    this.router.navigateByUrl('/questions');
+     //this.router.navigateByUrl('/userprofile');
    }
     ,(err)=>{
       console.log(err);

@@ -14,6 +14,8 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 
 import{AuthGuard} from './shared/auth.guard';
 import { AddcredentialsComponent } from './addcredentials/addcredentials.component';
+import { EditprofileComponent } from './editprofile/editprofile.component';
+//import { AddcredentialsComponent } from './addcredentials/addcredentials.component';
 
 const routes: Routes = [
   {
@@ -59,6 +61,10 @@ const routes: Routes = [
     path:'addCredentials',
     component:AddcredentialsComponent
 
+  },
+  {
+    path:'editprofile',
+   component:EditprofileComponent
   }
 
 

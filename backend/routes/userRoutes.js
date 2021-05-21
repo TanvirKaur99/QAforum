@@ -6,7 +6,7 @@ approute.post('/newUser',myctrl.addnew);//for registering a new user
 approute.post('/authentication',myctrl.authenticate);//for authenticating a user
 
 
-approute.get('/userinfo/:id',myctrl.selectedUser);//for selecting a particular user id 
+approute.get('/userinfo/:id',myctrl.selectedUser);//for selecting a particular user id
 
 
 approute.post('/addnewQuepost',myctrl.addnewQuePost);//for adding a new Question post into database
@@ -18,6 +18,9 @@ approute.get('/displayQuepost/:userid',myctrl.displayQuepost);//for displaying a
 
 approute.post('/addans',myctrl.addanswers);       //add answer to db
 approute.get('/displayans/:questionid',myctrl.displayanswer); //get answers of the same question
+
+approute.put('/updateRecord/:id',myctrl.updatedData);//for updating the user record
+
 
 
 

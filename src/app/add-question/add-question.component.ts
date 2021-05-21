@@ -36,17 +36,17 @@ export class AddQuestionComponent implements OnInit {
   }
   onadd(f:NgForm){
     this.userservice. addQuePost(f.value).subscribe((res)=>{
-      console.log(res);
-     // this.router.navigateByUrl('/profile')
-     //this.dialog.closeAll();
-
-alert('Question submitted successfully')
+    console.log(res);
+    alert('Question submitted successfully')
+    this.dialog.closeAll();
 
     },(err)=>{
       console.log(err);
     }
     )
-
+  }
+  close(){
+    this.router.navigateByUrl('/userprofile')
   }
   }
 

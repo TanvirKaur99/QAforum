@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-//import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+
 import { UserService } from '../shared/user.service';
 
 @Component({
@@ -11,24 +11,39 @@ import { UserService } from '../shared/user.service';
 })
 export class AddcredentialsComponent implements OnInit {
 
-  constructor(public userservice:UserService ,public router:Router,
-    ) { }
+  constructor(public userservice:UserService, public router:Router) { }
 
-  id:any;
+
+
+  credentialdata:any=[];
+  cred:any=[]
+  id :any
 
   ngOnInit(): void {
-
     this.id=this.userservice.getuserId();
-  console.log(this.id);
+    console.log(this.id);
 
+    this.userservice.displaycredentials(this.userservice.getuserId()).subscribe((res)=>{
+      this.credentialdata=res;
+      this.cred=this.credentialdata.data;
+      console.log(this.cred);
 
+    },
+    (err)=>{
+      console.log(err);
+    })
   }
+
+
+
+
+
   submitcred(f:NgForm){
     this.userservice.addcredentials(f.value).subscribe((res)=>{
       console.log(res);
-      alert('Credentials added successfully')
-      // this.router.navigateByUrl('/profile')
-
+      alert('credentials added successfully')
+      this.router.navigateByUrl('/userprofile')
+     // this.dialog.closeAll();
 
     },(err)=>{
       console.log(err);
@@ -37,6 +52,4 @@ export class AddcredentialsComponent implements OnInit {
     )
 
   }
-
-
 }

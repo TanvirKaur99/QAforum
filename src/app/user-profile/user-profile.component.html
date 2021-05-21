@@ -56,9 +56,9 @@
             <div class="col-md-4">
                 <div class="profile-work">
                     <!-- <h3 (click)="addcred()">Add Credentials</h3><br> -->
-                    <button type="submit" (click)="editprofile()" class="rounded" mat-stroked-button>Edit Your profile </button>
-                  <button type="submit" (click)="addcred()" class="mt-3" mat-stroked-button>Add Credentials </button>
-                    <button type="submit" (click)="logout()" class="mt-3" mat-stroked-button>Logout </button>
+                    <button type="submit" (click)="editprofile()" class="rounded" mat-stroked-button>Edit Your profile </button><br>
+                  <button type="submit" (click)="addcred()" class="mt-3" mat-stroked-button>Add Credentials </button><br>
+                    <button type="submit" (click)="logout()" class="mt-3" mat-stroked-button>Logout </button><br>
                     <!-- <div class="row">
                       <div class="col-md-6">
                           <label>Location{{cred.location}}</label>
@@ -122,6 +122,18 @@
 
                                 <h1>Other Information</h1>
 
+                                <!-- <tr *ngFor="let credential of cred">
+                                  <td>{{credential.location}}</td>
+                                  <td>{{credential.address}}</td>
+                                  <td>{{credential.profile}}</td>
+                                  <td>{{credential.dateofbirth}}</td>
+                                  <td>{{credential.workexperience}}</td>
+                                  <td>{{credential.user}}</td>
+                                  <td>{{credential.education}}</td>
+
+                                 </tr> -->
+
+
 
                                 <div class="row">
                                   <div class="col-md-6">
@@ -175,6 +187,7 @@
 
                     </div>
                     <div class="tab-pane fade" id="question" role="tabpanel" aria-labelledby="question-tab">
+                       <!-- <div *ngIf="que.length; else noques"> -->
 
                         <div class="container Heading shadow-sm p-3 bg-body rounded " *ngFor="let que1 of que">
                           <span class="follow">
@@ -247,6 +260,15 @@
                         <button class="mt-3 ml-4" mat-raised-button color="primary" (click)="askque()">Ask more Questions</button>
                     </div>
 
+
+                    <!-- <ng-template #noques>
+                      <h3>You haven't asked any question yet.</h3>
+                      <button class="mt-3 ml-4" mat-raised-button color="primary" (click)="askque()">Ask Questions</button>
+                    </ng-template> -->
+
+                    <!-- </div> -->
+
+
                     <div class="tab-pane fade" id="answer" role="tabpanel" aria-labelledby="answer-tab">
 
                       <h3>You haven't answer any question yet.</h3>
@@ -263,6 +285,7 @@
         </div>
     </form>
 </div>
+
 
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

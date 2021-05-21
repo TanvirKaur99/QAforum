@@ -46,7 +46,7 @@ export class AnswersComponent implements OnInit {
     this.quesresponse=res;
     console.log(res);
     this.que=this.quesresponse.data;
-    console.log(this.que[0]._id);
+   // console.log(this.que[0]._id);
     console.log("question added successfully");
 
   },

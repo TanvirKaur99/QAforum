@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../shared/user.service';
 import { EditprofileComponent } from '../editprofile/editprofile.component';
-import { AddcredentialsComponent } from '../addcredentials/addcredentials.component';
+//import { AddcredentialsComponent } from '../addcredentials/addcredentials.component';
 //import{AddQuestionComponent} from '../add-question/add-question.component';
 import { MatDialog } from '@angular/material/dialog';
 
@@ -52,20 +52,20 @@ export class UserProfileComponent implements OnInit {
     console.log(err);
   })
 
-  this.userservice.displaycredentials(this.id).subscribe((res)=>{
-    this.credentialdata=res;
-    console.log(res);
-    this.cred=this.credentialdata.data;
-    console.log(this.cred[0]);
-}
-,(err)=>{
-console.log(err);
+  this.userservice.displaycredentials(this.userservice.getuserId()).subscribe((res)=>{
+         this.credentialdata=res;
+        console.log(res);
+         this.cred=this.credentialdata.data;
+         console.log(this.cred[0]);
+     }
+     ,(err)=>{
+     console.log(err);
+
+     }
+     )
 
 }
-)
-//this.userservice.credentialsdata();
 
-}
 askque(){
  // this.dialog.open(AddQuestionComponent);
  this.router.navigateByUrl('/addQuestion');
@@ -75,14 +75,17 @@ askque(){
     // const dialogRef= this.dialog.open(AddcredentialsComponent,{
     //   height: '800px',
     //   width: '800px'});
-    this.router.navigateByUrl('/addCredentials')
+     this.router.navigateByUrl('/addCredentials')
 
   }
  logout(){
+   console.log(this.userservice.getToken)
   this.router.navigateByUrl('/login');
  }
  editprofile(){
-  this.dialog.open(EditprofileComponent);
+ // this.dialog.open(EditprofileComponent);
+ this.router.navigateByUrl('/editprofile')
+
  }
 
 }

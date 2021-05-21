@@ -31,6 +31,7 @@ import { EditprofileComponent } from './editprofile/editprofile.component';
 import { AddcredentialsComponent } from './addcredentials/addcredentials.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,7 +53,8 @@ import { AddcredentialsComponent } from './addcredentials/addcredentials.compone
     AddQuestionComponent,
     LogoutComponent,
     EditprofileComponent,
-    AddcredentialsComponent
+    AddcredentialsComponent,
+
   ],
   imports: [
     BrowserModule,

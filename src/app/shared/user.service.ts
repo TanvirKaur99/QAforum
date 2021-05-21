@@ -10,22 +10,6 @@ import{PostQue} from './post-que.model';
 })
 export class UserService {
 
-//   credentialdata:any=[];
-//   cred:any=[];
-
-
-//   credentialsdata(){
-//   this.displaycredentials(this.getuserId()).subscribe((res)=>{
-//     this.credentialdata=res;
-//     this.cred=this.credentialdata.data;
-//     console.log(this.cred);
-// }
-// ,(err)=>{
-// console.log(err);
-
-// })
-//   }
-
   public newUser : User={
     name:'',
     email:'',
@@ -52,32 +36,19 @@ export class UserService {
   public answers:Answer={
     answer:'',
     questionid:'',
-    // questionid:this.que[0]._id,
     userid:this.getuserId()
   };
 
 
-  // public addcred:Addcredentials={
-  //   location:this.cred.location,
-  //   profile:this.cred.profile,
-  //   education:this.cred.education,
-  //   dateofbirth:this.cred.dateofbirth,
-  //   workexperience:this.cred.workexperience,
-  //   address:this.cred.address,
-  //   user:this.getuserId()
-  // };
-
-
-
   public addcred:Addcredentials={
-      location:'',
-      profile:'',
-      education:'',
-      dateofbirth:'',
-      workexperience:'',
-      address:'',
-      user:this.getuserId()
-    };
+    location:'',
+    profile:'',
+    education:'',
+    dateofbirth:'',
+    workexperience:'',
+    address:'',
+    user:this.getuserId()
+  };
 
 
 
@@ -102,11 +73,11 @@ export class UserService {
   }
 
   addcredentials(credentials:Addcredentials){
-    return this.http.post('http://localhost:3200/addcred', credentials);
+    return this.http.post('http://localhost:3000/addcred', credentials);
   }
 
   displaycredentials(id:any){
-    return this.http.get('http://localhost:3200/displaycred/'+id);
+    return this.http.get('http://localhost:3000/displaycred/'+id);
   }
 
 
@@ -123,8 +94,14 @@ export class UserService {
 
 
 addanswer(answers:Answer){
-  return this.http.post('http://localhost:3200/addans',answers);
+  return this.http.post('http://localhost:3000/addans',answers);
 };
+
+
+
+updateuser(selected:User){
+  return this.http.put(`${'http://localhost:3000/updateRecord'}/${this.getuserId()}`,selected);
+}
 
 
 
@@ -189,11 +166,5 @@ isloggedIn()
     return null;
   }
 }
-
-
-
-
-
-
 
 }
