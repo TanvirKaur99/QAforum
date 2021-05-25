@@ -4,16 +4,22 @@ import { User,loginUser} from './user.model';//front end
 import{Addcredentials} from './addcredentials.model';
 import{Answer} from './answer.model';
 import{PostQue} from './post-que.model';
+//import { Observable } from 'rxjs'
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
+
+  id:any;
+  userdata:any=[];
+  userinfo:any=[];
+
   public newUser : User={
-    name:'',
-    email:'',
-    contact:'',
+    name:this.userinfo.name,
+    email:this.userinfo.email,
+    contact:this.userinfo.contact,
     password:'',
     confirmpassword:'',
 
@@ -61,16 +67,21 @@ export class UserService {
     return this.http.post('http://localhost:3000/newUser',user);
   }
 
+
    //calling login api
   login(existUser:loginUser)
   {
     return this.http.post('http://localhost:3000/authentication',existUser);
   }
 
+
   //to display profile of the user calling userSelected api
   display(id:any){
     return this.http.get('http://localhost:3000/userinfo/'+id);
   }
+
+
+
 
   addcredentials(credentials:Addcredentials){
     return this.http.post('http://localhost:3000/addcred', credentials);
@@ -79,6 +90,7 @@ export class UserService {
   displaycredentials(id:any){
     return this.http.get('http://localhost:3000/displaycred/'+id);
   }
+
 
 
 
@@ -93,14 +105,39 @@ export class UserService {
   }
 
 
+
+//for adding answer
 addanswer(answers:Answer){
   return this.http.post('http://localhost:3000/addans',answers);
 };
 
+//to display all the answers of the particular questions
+displayanswer(id:any){
+  return this.http.get('http://localhost:3000/displayans/'+id);
+}
+
+dispUserAns(id:any){
+  return this.http.get('http:localhost:3000/displayUserans/'+id);
+}
 
 
+
+//for updating user
 updateuser(selected:User){
   return this.http.put(`${'http://localhost:3000/updateRecord'}/${this.getuserId()}`,selected);
+};
+
+
+
+//for getting list of registered user
+getAllusers(){
+  return this.http.get('http://localhost:3000/allusers');
+}
+
+
+//for getting list of all the questionspo
+getAllQuestions(){
+  return this.http.get('http://localhost:3000/allques');
 }
 
 
@@ -120,14 +157,18 @@ getToken()
 
 deleteToken()
 {
-  localStorage.removeItem('usertoken');
+ return localStorage.removeItem('usertoken');
 }
+
+
+
+
 
 //for storing user id
 
  setuserId(id:string)
  {
-   localStorage.setItem('userid',id);
+  localStorage.setItem('userid',id);
  }
  getuserId()
  {
@@ -137,6 +178,28 @@ deleteToken()
  {
    localStorage.removeItem('userid');
  }
+
+
+
+
+
+ //for storing questionid
+ setquestionid(qid:string){
+     localStorage.setItem('questionid',qid);
+   }
+
+   getquestionid(){
+     return localStorage.getItem('questionid');
+
+   }
+
+   deletequestionid(){
+     localStorage.removeItem('questionid');
+   }
+
+
+
+
 
  //for getting user payload
 getPayload()
@@ -153,6 +216,7 @@ getPayload()
   }
 
 }
+
 
 isloggedIn()
 {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { User } from '../shared/user.model';
 import { UserService } from '../shared/user.service';
 
@@ -20,7 +20,7 @@ export class EditprofileComponent implements OnInit {
   edit:any=[];
   updateform!:NgForm;
 
-  constructor(public userservice:UserService, private dialog:MatDialog) {
+  constructor(public userservice:UserService, private router:Router) {
 
    }
   ngOnInit(): void {
@@ -39,19 +39,20 @@ export class EditprofileComponent implements OnInit {
 
 
   OnSubmit(f:NgForm){
-    // console.log(f.value);
+     console.log(f.value);
     this.userservice.updateuser(f.value).subscribe((res)=>{
       console.log(res);
       this.edituser=res;
       this.edit=this.edituser.data;
       console.log(this.edit);
-      this.dialog.closeAll();
 
+      alert('Profile Edited sucessfully');
+      this.router.navigateByUrl('/userprofile');
+  },(err)=>{
+    console.log(err);
+    alert(' Error in updating profile')
+  })
 
-    })
 }
 
-close(){
-  this.dialog.closeAll();
-}
 }

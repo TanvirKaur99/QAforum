@@ -1,7 +1,7 @@
 require('./registerModel');
 const mongoose=require('mongoose');
  var postQueSchema=mongoose.Schema({
-     
+
     question:{
         type:String,
         required:[true,'Post should be enterd']
@@ -17,11 +17,19 @@ const mongoose=require('mongoose');
         type:Date,
         default:Date.now()
     },
+
     user:{
         type:mongoose.Schema.Types.ObjectId,
-        ref:'userRegister'   
+        ref:'userRegister'
         //this is the reference to the registerModel
-    }
+    },
+    // likes:[
+    //   {
+    //     type:mongoose.Schema.Types.ObjectId,
+    //     ref:'userRegister'
+
+    //   }
+    // ]
 
  })
 

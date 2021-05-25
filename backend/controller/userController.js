@@ -3,11 +3,13 @@ require('../config/passportConfig');
 require('../model/postQuesModel');//import postQuesModel
 require('../model/addcredModel');//AddCredentials Model
 require('../model/answerModel');
+require('../model/profileImageModel');//importing profileImage model
 
 
 const mongoose = require('mongoose');
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
+const multer=require('multer');
 
 //FOR MODELS VARIABLES
 
@@ -15,6 +17,10 @@ var UserData=mongoose.model('userRegister');//UserData object created for userRe
 var newQuePost=mongoose.model('QPost');//newPost is the reference to the Qpost Model
 var credData=mongoose.model('addcredentials');
 var ansData=mongoose.model('answer');
+var proImgData= mongoose.model('profileImage');//profileImages is the reference to the profileimage
+
+
+
 
 //Function for Adding new user or register a user
 module.exports.addnew=(req,res)=>{
@@ -40,13 +46,15 @@ module.exports.addnew=(req,res)=>{
     });
 }
 
+
+
 //to check authentication :if user is registered it will generate "token" and "user" asa response
 
 module.exports.authenticate=(req,res,next)=>{
     passport.authenticate('local',(err,user,info)=>{
         if(err) return res.status(404).json(err);
         if(user) return res.status(200).json({
-            "token":jwt.sign({_id:user._id},"SecretToken",{expiresIn:'1000m'}),
+            "token":jwt.sign({_id:user._id},"SecretToken",{expiresIn:'4000m'}),
             "user":user
         });
         if(info) return res.status(401).json(info);
@@ -72,6 +80,8 @@ module.exports.selectedUser=(req,res)=>{
        })
       })
     }
+
+
 
     //add credentials
 module.exports.addcredentials=(req,res)=>{
@@ -100,6 +110,9 @@ module.exports.addcredentials=(req,res)=>{
 })
 }
 
+
+
+
 //display credentials
 
 module.exports.displaycredentials=(req,res)=>{
@@ -124,7 +137,8 @@ module.exports.displaycredentials=(req,res)=>{
       question:req.body.question,
       category:req.body.category,
       about:req.body.about,
-      user:req.body.user
+      user:req.body.user,
+      likes:req.body.likes
     });
 
       myQpost.save().then((docs)=>{
@@ -170,9 +184,10 @@ module.exports.addanswers=(req,res)=>{
 
 
   });
-    console.log(answer)
+
   myanswer.save().then((docs)=>{
-    console.log(docs);
+   console.log(docs);
+
  return res.status(200).json({
   success:true,
   message:'new answer added',
@@ -188,9 +203,12 @@ module.exports.addanswers=(req,res)=>{
 })
 }
 
-//display answer
+
+
+//display answer of a particular question
 
 module.exports.displayanswer=(req,res)=>{
+ // console.log(req.params.questionid)
   return ansData.find({questionid:req.params.questionid}).populate('questionid').exec().then((docs)=>{
     return res.status(200).json({
       success:true,
@@ -205,6 +223,29 @@ module.exports.displayanswer=(req,res)=>{
 })
 })
 }
+
+module.exports.displayUseranswer=(req,res)=>{
+  // console.log(req.params.questionid)
+   return ansData.find({userid:req.params.userid}).populate('userid').exec().then((docs)=>{
+     return res.status(200).json({
+       success:true,
+       message:'list of answers',
+       data:docs
+   })
+ }).catch((err)=>{
+   return res.status(400).json({
+     success:false,
+     message:'error in displaying',
+     error:err.message
+ })
+ })
+ }
+
+
+
+
+
+
 
 //for updating user
 module.exports.updatedData=(req,res)=>{
@@ -227,3 +268,162 @@ module.exports.updatedData=(req,res)=>{
   })
 }
 
+
+//for getting all the registered user
+//    var _id = mongoose.Types.ObjectId();
+//   module.exports.findusers=(req,res)=>{
+// UserData.find({}, {name:1, _id}).then((docs)=>{
+//   return res.status(200).json({
+//   success:true,
+//   message:'users found',
+//   data:docs
+
+// })
+
+//   })
+
+//   .catch((err)=>{
+//     return res.status(400).json({
+//       success:false,
+//       message:'Users not found',
+//       error:err.message
+
+//     })
+//    })
+//    console.log(data)
+//   }
+
+
+
+
+// for getting all the questions asked
+  var _id = mongoose.Types.ObjectId();
+  module.exports.allquestions=(req,res)=>{
+    newQuePost.find({}, {question:1, _id,user:1}).then((docs)=>{
+  return res.status(200).json({
+  success:true,
+  message:'questions found',
+  data:docs
+
+})
+
+  })
+
+  .catch((err)=>{
+    return res.status(400).json({
+      success:false,
+      message:'questions not found',
+      error:err.message
+
+    })
+   })
+
+  }
+
+  //for liking a post
+
+
+  // mongoose.exports.likePost=(req,res)=>{
+
+  //   newQuePost.findByIdAndUpdate(req.body.questionid,{
+  //     $push:{likes:req.user._id}
+  //   },{
+  //     new:true
+  //   }).exec((err,result)=>{
+  //     if(err){
+  //       return res.status(422).json({error:err})
+  //     }else{
+  //       res.json(result)
+  //     }
+  //   })
+
+  // }
+
+
+
+
+// mongoose.export.likePost=(req,res)=>{
+//   newQuePost.findOneAndUpdate(req.body.questionid,{
+//          $push:{likes:req.user._id}
+//        },{
+//          new:true
+//        }).then((docs)=>{
+//         return res.status(200).json({
+//         success:true,
+//         message:'post liked',
+//         data:docs
+
+//       })
+
+//         })
+
+//         .catch((err)=>{
+//           return res.status(400).json({
+//             success:false,
+//             message:'Error in liking a post',
+//             error:err.message
+
+//           })
+//          })
+// }
+
+
+//for displaying image....
+
+// module.exports.displayfile=(req,res)=>{
+//   res.sendFile(__dirname+"/views/file.html");
+
+// }
+
+//for uploading profilepicture
+
+var storage=multer.diskStorage({
+
+  destination:(req,file,cb)=>{
+    cb(null,'./uploads');
+  },
+  filename:(req,file,cb)=>{
+    cb(null,file.originalname);
+  }
+
+  })
+
+
+
+  var upload=multer({storage:storage}).single('file');
+
+  module.exports.uploadimage=(req,res)=>{
+    upload(req,res,(err)=>{
+      if(err)
+      console.log("error in uploading file" +err);
+
+      else{
+        console.log("file uploading successfully");
+
+        var proimage=new proImgData({
+          user:req.params.user,
+          image:req.file.path,
+          profile:req.body.profile
+
+        });
+
+        proimage.save().then((docs)=>{
+          return res.status(200).json({
+            success:true,
+            message:"image saved successfully",
+            data:docs
+          })
+        })
+             .catch((err)=>{
+             return res.status(404).json({
+               success:false,
+               message:"error in uploading file",
+               error:err.message
+             })
+             })
+
+             console.log(req.file);
+
+      }
+    })
+  }

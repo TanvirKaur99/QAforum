@@ -17,7 +17,6 @@ var answerSchema=mongoose.Schema({
     ref:'userRegister'
   }
 
-
 });
 
 mongoose.model('answer',answerSchema);

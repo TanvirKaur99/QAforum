@@ -29,6 +29,7 @@ import{MaterialModule} from './material.module';
 import { LogoutComponent } from './logout/logout.component';
 import { EditprofileComponent } from './editprofile/editprofile.component';
 import { AddcredentialsComponent } from './addcredentials/addcredentials.component';
+import { AuthGuard } from './shared/auth.guard';
 
 
 
@@ -65,7 +66,8 @@ import { AddcredentialsComponent } from './addcredentials/addcredentials.compone
     HttpClientModule
 
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [AuthGuard],
+  bootstrap: [AppComponent],
+
 })
 export class AppModule { }

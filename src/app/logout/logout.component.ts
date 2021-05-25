@@ -17,7 +17,7 @@ export class LogoutComponent implements OnInit {
 
     this.userservice.deleteuserId();
 
-     this.router.navigateByUrl('/login');
+    this.router.navigateByUrl('/login');
 
      console.log("token deleted successfully");
 

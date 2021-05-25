@@ -42,6 +42,8 @@ export class UserProfileComponent implements OnInit {
    //  console.log(this.userinfo);//give userinfo on console without success and msg in backend format
   })
 
+
+  //for displaying Questions by the user
   this.userservice.displayQPost(this.userservice.getuserId()).subscribe((res)=>{
     this.quesresponse=res;
     console.log(res);
@@ -52,6 +54,24 @@ export class UserProfileComponent implements OnInit {
     console.log(err);
   })
 
+
+  //for displaying Answers by the user
+  this.userservice.dispUserAns(this.userservice.getuserId()).subscribe((res)=>{
+    this.answerresponse=res;
+    console.log(res);
+    this.ans=this.answerresponse.data;
+
+  },
+  (err)=>{
+    console.log(err);
+  })
+
+
+
+
+
+
+  //for displaying the credentials by the user
   this.userservice.displaycredentials(this.userservice.getuserId()).subscribe((res)=>{
          this.credentialdata=res;
         console.log(res);
@@ -79,7 +99,8 @@ askque(){
 
   }
  logout(){
-   console.log(this.userservice.getToken)
+  // console.log(this.userservice.deleteToken());
+  console.log(this.userservice.deleteToken());
   this.router.navigateByUrl('/login');
  }
  editprofile(){

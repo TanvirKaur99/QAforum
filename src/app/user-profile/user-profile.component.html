@@ -187,7 +187,7 @@
 
                     </div>
                     <div class="tab-pane fade" id="question" role="tabpanel" aria-labelledby="question-tab">
-                       <!-- <div *ngIf="que.length; else noques"> -->
+                       <div *ngIf="que.length; else noques">
 
                         <div class="container Heading shadow-sm p-3 bg-body rounded " *ngFor="let que1 of que">
                           <span class="follow">
@@ -201,26 +201,26 @@
                               {{que1.question}}
                             </a>
                           </div>
-                          <span class="answerinfo">
+                          <!-- <span class="answerinfo">
                             No answer yet .
                           </span>
-                          <span class="follow">last active 9m ago</span>
+                          <span class="follow">last active 9m ago</span> -->
 
 
                           <!--div1.1 -->
                            <div class="bottomdiv">
                             <!-- <button class="mt-1" data-toggle="collapse" data-target="#collapseExample"  mat-raised-button><img src="../../assets/assets/img/icon/answer.png" width="20" class="mt-1 mr-1" alt="answer">Answer</button>
-                            <button mat-raised-button class="ml-2"><img src="../../assets/assets/img/icon/follow.png" width="20" alt="follow">Follow</button> -->
+                            <button mat-raised-button class="ml-2"><img src="../../  /assets/img/icon/follow.png" width="20" alt="follow">Follow</button> -->
                              <div class="rightbottom ml-5 mt-2">
-                              <span class="dislike"><a href="#" ><img src="../../assets/assets/img/icon/dislike.png" width="30"  alt="dislike"></a></span>
-                              <span class="more ml-3"><a href="#"><img src="../../assets/assets/img/icon/more.png" width="30" alt="more"></a></span>
+                              <!-- <span class="dislike"><a href="#" ><img src="../../assets/assets/img/icon/dislike.png" width="30"  alt="dislike"></a></span>
+                              <span class="more ml-3"><a href="#"><img src="../../assets/assets/img/icon/more.png" width="30" alt="more"></a></span> -->
                             </div>
 
 
 
                             <!--  div1.2 for show answer panel -->
 
-                            <mat-accordion>
+                            <!-- <mat-accordion>
                               <mat-expansion-panel hideToggle class="expansiontittle mt-3">
                                 <mat-expansion-panel-header class="expansiontittle">
                                   <mat-panel-title class="expansiontittle">
@@ -235,7 +235,7 @@
                                     <div class="customfont Heading containern shadow-sm p-3 bg-body rounded ">
                                       <a href="#"><img src="../../assets/assets/img/icon/bold.png" width="30" class="mr-3" alt="bold"></a>
                                       <a href="#"><img src="../../assets/assets/img/icon/italic.png" width="30" class="mr-3" alt="italic"></a>
-                                      <!-- <a href="#"><img src="../../assets/svg(s)/ol.svg" width="20" class="mr-4" alt="ordered list"></a> -->
+                                      <a href="#"><img src="../../assets/svg(s)/ol.svg" width="20" class="mr-4" alt="ordered list"></a>
                                       <a href="#"><img src="../../assets/assets/img/icon/list.png" width="34" class="mr-2" alt="unordered list"></a>
                                       <span ml-auto>
                                         <a href="#"><img src="../../assets/assets/img/icon/numbered-list.png" width="25" class="ml-2" alt="ordered"></a>
@@ -253,7 +253,7 @@
                                   </div>
                                 </div>
                                </mat-expansion-panel>
-                             </mat-accordion>
+                             </mat-accordion> -->
 
                           </div>
                        </div>
@@ -261,21 +261,22 @@
                     </div>
 
 
-                    <!-- <ng-template #noques>
+                    <ng-template #noques>
                       <h3>You haven't asked any question yet.</h3>
                       <button class="mt-3 ml-4" mat-raised-button color="primary" (click)="askque()">Ask Questions</button>
-                    </ng-template> -->
-
-                    <!-- </div> -->
-
-
-                    <div class="tab-pane fade" id="answer" role="tabpanel" aria-labelledby="answer-tab">
-
-                      <h3>You haven't answer any question yet.</h3>
+                    </ng-template>
 
                     </div>
 
-                    <div class="tab-pane fade" id="follower" role="tabpanel" aria-labelledby="follower-tab">
+
+                    <div class="tab-pane fade" id="answer" role="tabpanel" aria-labelledby="answer-tab" >
+                      <!-- <div class="container Heading shadow-sm p-3 bg-body rounded "> -->
+                      <!-- <h3>{{ans1.answer}}</h3> -->
+                      <h3>No answers yet</h3>
+                      <!-- </div> -->
+                    </div>
+
+                     <div class="tab-pane fade" id="follower" role="tabpanel" aria-labelledby="follower-tab">
 
                       <h3>No followers yet</h3>
 

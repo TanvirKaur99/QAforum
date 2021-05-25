@@ -10,8 +10,7 @@ import { UserService } from '../shared/user.service';
 export class AnswersComponent implements OnInit {
 
 
-
-  constructor(public userservice:UserService,) { }
+  constructor(public userservice:UserService) { }
 
   id:any;
   qid:any;
@@ -35,10 +34,10 @@ export class AnswersComponent implements OnInit {
     // console.log(this.queid);
 
   this.userdata= this.userservice.display(this.id).subscribe((res)=>{//with display method returns success message and data
-     this.userdata=res;
+  this.userdata=res;
 
-     this.userinfo=this.userdata.data;
-   console.log(this.userinfo);//give userinfo on console without success and msg in backend format
+  this.userinfo=this.userdata.data;
+  console.log(this.userinfo);//give userinfo on console without success and msg in backend format
 
   })
 
@@ -47,6 +46,7 @@ export class AnswersComponent implements OnInit {
     console.log(res);
     this.que=this.quesresponse.data;
    // console.log(this.que[0]._id);
+   console.log(this.que)
     console.log("question added successfully");
 
   },
@@ -54,14 +54,11 @@ export class AnswersComponent implements OnInit {
     console.log(err);
   })
 
-
   }
   postans(f:NgForm){
     console.log(f.value);
-   this.userservice.addanswer(this.id).subscribe((res)=>{
-     this.ansresponse=res;
-     console.log(res);
-     this.ans=this.ansresponse.data;
+    this.userservice.addanswer(f.value).subscribe((res)=>{
+      console.log(res);
      console.log("answer added successfully");
      alert('Answer added successfuly')
    }
