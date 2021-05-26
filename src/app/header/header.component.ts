@@ -24,11 +24,18 @@ export class HeaderComponent implements OnInit {
      this.userdata=res;
    //  console.log(res);
      this.userinfo=this.userdata.data;
-   //  console.log(this.userinfo
+   //  console.log(this.userinfo)
   })
 
 }
 profileop(){
   this.router.navigateByUrl('/userprofile');
+  this.userinfo.name;
+  }
+
+logout(){
+this.router.navigateByUrl('/login')
+this.userservice.deleteToken();
 }
+
 }

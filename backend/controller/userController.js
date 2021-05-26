@@ -226,6 +226,7 @@ module.exports.displayanswer=(req,res)=>{
 
 module.exports.displayUseranswer=(req,res)=>{
   // console.log(req.params.questionid)
+  //console.log(req.params.userid);
    return ansData.find({userid:req.params.userid}).populate('userid').exec().then((docs)=>{
      return res.status(200).json({
        success:true,

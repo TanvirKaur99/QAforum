@@ -33,7 +33,7 @@ const routes: Routes = [
   {
     path:'questions',
     component:QuestionsComponent,
-    canActivate:[AuthGuard],
+
   },
   {
     path:'help',
@@ -41,11 +41,13 @@ const routes: Routes = [
   },
   {
     path:'contact',
-    component:ContactComponent
+    component:ContactComponent,
+    canActivate:[AuthGuard],
   },
   {
     path:'answers',
-    component:AnswersComponent
+    component:AnswersComponent,
+    canActivate:[AuthGuard],
   },
   {
     path:'addQuestion',
@@ -54,7 +56,8 @@ const routes: Routes = [
   },
   {
     path:'userprofile',
-    component:UserProfileComponent
+    component:UserProfileComponent,
+    canActivate:[AuthGuard],
 
   },
   {
@@ -66,7 +69,6 @@ const routes: Routes = [
     path:'editprofile',
    component:EditprofileComponent
   }
-
 
 ];
 

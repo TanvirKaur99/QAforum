@@ -117,7 +117,7 @@ displayanswer(id:any){
 }
 
 dispUserAns(id:any){
-  return this.http.get('http:localhost:3000/displayUserans/'+id);
+  return this.http.get('http://localhost:3000/displayUserans/'+id);
 }
 
 
@@ -140,6 +140,11 @@ getAllQuestions(){
   return this.http.get('http://localhost:3000/allques');
 }
 
+// login
+loggedin(){
+  return localStorage.getItem('usertoken');
+ }
+
 
 
 
@@ -159,7 +164,6 @@ deleteToken()
 {
  return localStorage.removeItem('usertoken');
 }
-
 
 
 
@@ -204,10 +208,11 @@ deleteToken()
  //for getting user payload
 getPayload()
 {
-  var token=JSON.stringify(this.getToken());
-  var userpayload=atob(token.split('.')[1]);
-  if(userpayload)
+  var token=this.getToken();
+
+  if(token)
   {
+    var userpayload=atob(token.split('.')[1]);
     return JSON.parse(userpayload);
   }
   else

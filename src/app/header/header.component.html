@@ -37,18 +37,20 @@
 <button mat-button [matMenuTriggerFor]="menu" class="nav-item ml-5"><img src="../../assets/assets/img/icon/userimg.png" width="28" alt="userprofile"></button>
 <mat-menu #menu="matMenu" class="optionmenu">
   <button  mat-menu-item class="d-block btn-block"><img src="../../assets/assets/img/icon/userimage.png" width="35" alt=""></button>
-  <button mat-menu-item (click)="profileop()" class="btn-block mt-2"><p class="namebtn">{{userinfo.name}}<i class="bi bi-arrow-right-circle-fill"></i></p></button>
+  <button mat-menu-item  class="btn-block mt-2">
+    <p class="namebtn"  *ngIf="userservice.loggedin()" (click)="profileop()">{{userinfo.name}}<i class="bi bi-arrow-right-circle-fill"></i></p></button>
   <mat-divider></mat-divider>
-  <button mat-menu-item><i class="bi bi-bookmark"></i>Messages</button>
-  <!-- <button mat-menu-item>Create Ad</button> -->
+  <!-- <button mat-menu-item><i class="bi bi-bookmark"></i>Messages</button>
+  <button mat-menu-item>Create Ad</button>
   <button mat-menu-item>Your Content</button>
   <button mat-menu-item><mat-icon>bookmark</mat-icon>Bookmarks</button>
   <button mat-menu-item><mat-icon>drafts</mat-icon>Drafts</button>
   <mat-divider></mat-divider>
   <button mat-menu-item>Settings</button>
   <button mat-menu-item>Languages</button>
-  <button mat-menu-item>help</button>
-  <button mat-menu-item>Logout</button>
+  <button mat-menu-item>help</button>-->
+
+  <button mat-menu-item (click)="logout()">Logout</button>
 
 </mat-menu>
 

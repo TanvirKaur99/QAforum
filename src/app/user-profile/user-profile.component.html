@@ -270,10 +270,13 @@
 
 
                     <div class="tab-pane fade" id="answer" role="tabpanel" aria-labelledby="answer-tab" >
-                      <!-- <div class="container Heading shadow-sm p-3 bg-body rounded "> -->
+                      <div class="container Heading shadow-sm p-3 bg-body rounded ">
+                        <div *ngFor ="let ans1 of ans">
+                          <h3>{{ans1.answer}}</h3>
+                        </div>
                       <!-- <h3>{{ans1.answer}}</h3> -->
-                      <h3>No answers yet</h3>
-                      <!-- </div> -->
+                      <!-- <h3>No answers yet</h3> -->
+                      </div>
                     </div>
 
                      <div class="tab-pane fade" id="follower" role="tabpanel" aria-labelledby="follower-tab">

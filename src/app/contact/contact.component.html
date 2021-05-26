@@ -1,4 +1,4 @@
- <mat-card class="center">
+ <!-- <mat-card class="center">
 <div>
    <p class=" well text-center para1">Contact</p>
  </div>
@@ -14,17 +14,19 @@
   needs to be updated.We will do our best to help
  </p>
  </div>
-</mat-card>
+</mat-card> -->
 
 <!--
  contact form starts from here -->
  <div>
 <mat-card class="center">
   <mat-toolbar>
-    <span class="title-center">CONTACT</span>
+    <span class="title-center">
+     CONTACT
+    </span>
   </mat-toolbar>
   <form name="form" #userform="ngForm"(ngSubmit)="userform.form.valid && getValues(userform)" novalidate>
-      this is firstname field
+      <!-- this is firstname field -->
      <mat-form-field>
       <input
       type="text"
@@ -49,9 +51,9 @@
     </mat-error>
     <br>
 
-      firstname field ends
+      <!-- firstname field ends -->
 
-      email field starts
+     <!-- email field starts  -->
       <mat-form-field>
         <input type="text"
         matInput
@@ -78,10 +80,10 @@
         </mat-error>
 
   <br>
-      useremail ends
+      <!-- useremail ends -->
 
 
-      purpose field starts
+      <!-- purpose field starts -->
       <mat-form-field>
         <mat-select
         placeholder="Select purpose"
@@ -106,10 +108,10 @@
       </mat-error>
 
     <br>
-    purpose field ends
+    <!-- purpose field ends -->
 
 
-     share details text area starts here
+     <!-- share details text area starts here -->
      <mat-form-field>
       <textarea matInput
       placeholder="Enter your address"
@@ -130,16 +132,16 @@
       </mat-error>
 
       <mat-error *ngIf="share.errors?.minlength">
-        address should be greater than 5 character length
+        <!-- address should be greater than 5 character length -->
       </mat-error>
       </mat-error>
       <br>
-      share details ends here
+      <!-- share details ends here -->
 
-      submit button starts
+      <!-- submit button starts -->
       <button type="submit"
       mat-raised-button color="primary"><mat-icon>menu</mat-icon>Submit</button>
-      submit button ends here
+      <!-- submit button ends here -->
 
     </form>
   <br><br>

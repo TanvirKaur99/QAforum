@@ -53,12 +53,12 @@ export class QuestionsComponent implements OnInit {
   }
   openDialogue(){
    // const dialogref = this.dialog.open(AddQuestionComponent)
-   this.router.navigateByUrl('/addQuestion');
+  this.router.navigateByUrl('/addQuestion');
   }
 
-  askque(){
-    this.router.navigateByUrl('/addQuestion');
-  }
+  // askque(){
+  //   this.router.navigateByUrl('/addQuestion');
+  // }
   ansQue(){
     this.router.navigateByUrl('/answers');
   }
