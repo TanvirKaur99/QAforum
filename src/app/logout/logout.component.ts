@@ -19,7 +19,8 @@ export class LogoutComponent implements OnInit {
 
     this.router.navigateByUrl('/login');
 
-     console.log("token deleted successfully");
+     //console.log("token deleted successfully");
+     //alert('Token deleted successfully')
 
   }
 

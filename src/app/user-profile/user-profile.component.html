@@ -10,16 +10,30 @@
 </head>
 <body>
   <div class="container emp-profile">
-    <form method="post">
+    <form  method="post">
         <div class="row">
             <div class="col-md-4">
+                <form #imageform="ngForm" (ngSubmit)="onadd(imageform)">
                 <div class="profile-img">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
+                    <!-- <img src={{image.image}} alt="profilepicture"> -->
                     <div class="file btn btn-lg btn-primary">
                         Change Photo
                         <input type="file" name="file"/>
+
                     </div>
+                    <!-- <div>
+                       <input
+                      type="hidden"
+                       name="userid"
+                        >
+                    </div> -->
+                    <!-- <button mat-stroked-button  class="ml-3" type="submit">Update picture</button> -->
                 </div>
+                 <!-- <div>
+                  <button class="ml-5" mat-stroked-button type="submit">Update picture</button>
+                </div> -->
+              </form>
             </div>
             <div class="col-md-6">
                 <div class="profile-head">
@@ -40,60 +54,37 @@
                       <li class="nav-item">
                         <a class="nav-link" id="answer-tab" data-toggle="tab" href="#answer" role="tab" aria-controls="answer" aria-selected="false">Answer</a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                       <a class="nav-link" id="follower-tab" data-toggle="tab" href="#follower" role="tab" aria-controls="follower" aria-selected="false">Followers</a>
-                  </li>
+                  </li> -->
                     </ul>
                 </div>
             </div>
-            <div class="col-md-2">
-                <!-- <input type="submit" class="profile-edit-btn" name="btnAddMore" (click)="editprofile()" value="Edit Profile"/><br> -->
 
-                <!-- <input type="submit" class="profile-edit-btn mt-3" name="btnAddMore" (click)="logout()" value="Logout"/> -->
-            </div>
         </div>
         <div class="row">
             <div class="col-md-4">
                 <div class="profile-work">
-                    <!-- <h3 (click)="addcred()">Add Credentials</h3><br> -->
-                    <button type="submit" (click)="editprofile()" class="rounded" mat-stroked-button>Edit Your profile </button><br>
-                  <button type="submit" (click)="addcred()" class="mt-3" mat-stroked-button>Add Credentials </button><br>
-                    <button type="submit" (click)="logout()" class="mt-3" mat-stroked-button>Logout </button><br>
-                    <!-- <div class="row">
-                      <div class="col-md-6">
-                          <label>Location{{cred.location}}</label>
-                      </div>
-                      <div class="col-md-6">
-                          <p>
-                            </p>
-                      </div>
-                  </div> -->
+
+                    <button type="submit" (click)="editprofile()" class="rounded mt-3 ml-2"  mat-stroked-button>Edit Your profile </button>
+                    <button type="submit" (click)="addcred()"  class="mt-3 ml-2" mat-stroked-button>Add Credentials </button>
+                    <button type="submit" (click)="editcred()"  class="mt-3 ml-2" mat-stroked-button>Edit Credentials </button>
 
 
-
-                    <!-- <a href="">Website Link</a><br/>
-                    <a href="">Bootsnipp Profile</a><br/>
-                    <a href="">Bootply Profile</a>
-                    <p>SKILLS</p>
-                    <a href="">Web Designer</a><br/>
-                    <a href="">Web Developer</a><br/>
-                    <a href="">WordPress</a><br/>
-                    <a href="">WooCommerce</a><br/>
-                    <a href="">PHP, .Net</a><br/> -->
                 </div>
             </div>
             <div class="col-md-8">
                 <div class="tab-content profile-tab" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-
-                                 <div class="row">
+                                <div class="row">
                                     <div class="col-md-6">
                                         <label>Name</label>
                                     </div>
                                     <div class="col-md-6">
-                                        <p>{{userinfo.name}}</p>
+                                        <p>{{userinfo.name}} </p>
                                     </div>
                                 </div>
+
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label>Email</label>
@@ -122,25 +113,13 @@
 
                                 <h1>Other Information</h1>
 
-                                <!-- <tr *ngFor="let credential of cred">
-                                  <td>{{credential.location}}</td>
-                                  <td>{{credential.address}}</td>
-                                  <td>{{credential.profile}}</td>
-                                  <td>{{credential.dateofbirth}}</td>
-                                  <td>{{credential.workexperience}}</td>
-                                  <td>{{credential.user}}</td>
-                                  <td>{{credential.education}}</td>
-
-                                 </tr> -->
-
-
-
-                                <div class="row">
+                                <div *ngFor="let cred1 of cred">
+                                <div class="row" >
                                   <div class="col-md-6">
                                       <label>Location</label>
                                   </div>
                                   <div class="col-md-6">
-                                      <p>{{cred[0].location}}</p>
+                                      <p>{{cred1.location}}</p>
                                   </div>
                               </div>
                               <div class="row">
@@ -148,7 +127,7 @@
                                     <label>Date Of Birth</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <p>{{cred[0].dateofbirth}}</p>
+                                    <p>{{cred1.dateofbirth}}</p>
                                 </div>
                             </div>
                             <div class="row">
@@ -156,7 +135,7 @@
                                   <label>Address</label>
                               </div>
                               <div class="col-md-6">
-                                  <p>{{cred[0].address}}</p>
+                                  <p>{{cred1.address}}</p>
                               </div>
                           </div>
                           <div class="row">
@@ -164,7 +143,7 @@
                                 <label>Profile</label>
                             </div>
                             <div class="col-md-6">
-                                <p>{{cred[0].profile}}</p>
+                                <p>{{cred1.profile}}</p>
                             </div>
                         </div>
                         <div class="row">
@@ -172,7 +151,7 @@
                               <label>Work Experience</label>
                           </div>
                           <div class="col-md-6">
-                              <p>{{cred[0].workexperience}}</p>
+                              <p>{{cred1.workexperience}}</p>
                           </div>
                       </div>
                       <div class="row">
@@ -180,16 +159,15 @@
                             <label>Education</label>
                         </div>
                         <div class="col-md-6">
-                            <p>{{cred[0].education}}</p>
+                            <p>{{cred1.education}}</p>
                         </div>
                     </div>
-
-
                     </div>
-                    <div class="tab-pane fade" id="question" role="tabpanel" aria-labelledby="question-tab">
-                       <div *ngIf="que.length; else noques">
+                    </div>
 
-                        <div class="container Heading shadow-sm p-3 bg-body rounded " *ngFor="let que1 of que">
+                    <div class="tab-pane fade" id="question" role="tabpanel" aria-labelledby="question-tab"    >
+                       <div *ngIf="que.length; else noques">
+                        <div class="container Heading shadow-sm p-3 bg-body rounded " *ngFor="let que1 of que"  >
                           <span class="follow">
                             Question added.
                           </span>
@@ -201,20 +179,28 @@
                               {{que1.question}}
                             </a>
                           </div>
-                          <!-- <span class="answerinfo">
+                          <span class="answerinfo">
                             No answer yet .
                           </span>
-                          <span class="follow">last active 9m ago</span> -->
+                          <span class="follow">last active 9m ago</span>
+
+                          <!-- <div>The Current Count is {{count}}</div> -->
 
 
                           <!--div1.1 -->
-                           <div class="bottomdiv">
-                            <!-- <button class="mt-1" data-toggle="collapse" data-target="#collapseExample"  mat-raised-button><img src="../../assets/assets/img/icon/answer.png" width="20" class="mt-1 mr-1" alt="answer">Answer</button>
-                            <button mat-raised-button class="ml-2"><img src="../../  /assets/img/icon/follow.png" width="20" alt="follow">Follow</button> -->
+                           <!-- <div class="bottomdiv">
+                            <button class="mt-1" data-toggle="collapse" data-target="#collapseExample"  mat-raised-button><img src="../../assets/assets/img/icon/answer.png" width="20" class="mt-1 mr-1" alt="answer">Answer</button>
+                            <button mat-raised-button class="ml-2"><img src="../../assets/assets/img/icon/follow.png" width="20" alt="follow">Follow</button>
                              <div class="rightbottom ml-5 mt-2">
-                              <!-- <span class="dislike"><a href="#" ><img src="../../assets/assets/img/icon/dislike.png" width="30"  alt="dislike"></a></span>
-                              <span class="more ml-3"><a href="#"><img src="../../assets/assets/img/icon/more.png" width="30" alt="more"></a></span> -->
+                              <span class="dislike"><a href="#" >
+                              <button type="submit" mat-flat-button ng-click="count = count + 1" ng-init="count=0">
+                                <img src="../../assets/assets/img/icon/dislikee.jpg" width="25"  alt="dislike">
+                              </button>
+                            </a></span>
+
+                              <span class="more ml-3"><a href="#"><img src="../../assets/assets/img/icon/more.png" width="30" alt="more"></a></span>
                             </div>
+                          </div> -->
 
 
 
@@ -230,25 +216,42 @@
                                 <div>
                                   <div class="answered"  >
                                     <div class="container Heading shadow-sm p-3 bg-body rounded mt-3">
-                                      <span class="username"><img src="../../assets/assets/img/icon/userimage.png" width="30"  alt="userimg">{{userinfo.name}}</span>
+                                      <span class="username"><img src="../../assets/assets/img/icon/userimg.jpg" width="30"  alt="userimg">{{userinfo.firstname}} {{userinfo.lastname}}</span>
                                     </div>
                                     <div class="customfont Heading containern shadow-sm p-3 bg-body rounded ">
-                                      <a href="#"><img src="../../assets/assets/img/icon/bold.png" width="30" class="mr-3" alt="bold"></a>
-                                      <a href="#"><img src="../../assets/assets/img/icon/italic.png" width="30" class="mr-3" alt="italic"></a>
+                                      <a href="#"><img src="../../assets/assets/img/icon/bold.png" width="20" class="mr-3" alt="bold"></a>
+                                      <a href="#"><img src="../../assets/assets/img/icon/italic.png" width="20" class="mr-3" alt="italic"></a>
                                       <a href="#"><img src="../../assets/svg(s)/ol.svg" width="20" class="mr-4" alt="ordered list"></a>
-                                      <a href="#"><img src="../../assets/assets/img/icon/list.png" width="34" class="mr-2" alt="unordered list"></a>
+                                      <a href="#"><img src="../../assets/assets/img/icon/unordered.png" width="28" class="mr-2" alt="unordered list"></a>
                                       <span ml-auto>
-                                        <a href="#"><img src="../../assets/assets/img/icon/numbered-list.png" width="25" class="ml-2" alt="ordered"></a>
+                                        <a href="#"><img src="../../assets/assets/img/icon/ordered.png" width="18" class="ml-2" alt="ordered"></a>
                                       </span>
                                     </div>
                                     <div class="inputans">
+                                      <form #answer="ngForm" (ngSubmit)="postans(answer)">
+
+                                        <input
+                                        type="hidden"
+                                        name="userid"
+                                        #userid="ngModel"
+                                        [(ngModel)]="userservice.answers.userid">
+
+                                        <input
+                                        type="hidden"
+                                        name="questionid"
+                                        #questionid="ngModel"
+                                        [(ngModel)]="que1._id"
+
+                                        >
                                       <mat-form-field class="ansfield">
-                                        <textarea matInput name="answerText" class="answerText"  rows="3" placeholder="Write Answer" ></textarea>
+                                        <textarea matInput name="answer" class="answerText"  rows="3" placeholder="Write Answer"
+                                        #answer="ngModel"
+                                        [(ngModel)]="userservice.answers.answer"></textarea>
                                       </mat-form-field>
                                       <button type="submit" class="postbtn" mat-stroked-button >Post</button>
                                       <button type="button" class="draftbtn mt-2" mat-stroked-button >Save Draft</button>
 
-
+                                     </form>
                                     </div>
                                   </div>
                                 </div>
@@ -256,30 +259,52 @@
                              </mat-accordion> -->
 
                           </div>
-                       </div>
-                        <button class="mt-3 ml-4" mat-raised-button color="primary" (click)="askque()">Ask more Questions</button>
-                    </div>
 
-
-                    <ng-template #noques>
-                      <h3>You haven't asked any question yet.</h3>
-                      <button class="mt-3 ml-4" mat-raised-button color="primary" (click)="askque()">Ask Questions</button>
-                    </ng-template>
-
-                    </div>
-
-
-                    <div class="tab-pane fade" id="answer" role="tabpanel" aria-labelledby="answer-tab" >
-                      <div class="container Heading shadow-sm p-3 bg-body rounded ">
-                        <div *ngFor ="let ans1 of ans">
-                          <h3>{{ans1.answer}}</h3>
-                        </div>
-                      <!-- <h3>{{ans1.answer}}</h3> -->
-                      <!-- <h3>No answers yet</h3> -->
                       </div>
-                    </div>
+                       <ng-template #noques>
+                        <h3>You haven't asked any question yet.</h3>
+                        <button class="mt-3 ml-4" mat-raised-button color="primary" (click)="askque()">Ask Questions</button>
+                      </ng-template>
 
-                     <div class="tab-pane fade" id="follower" role="tabpanel" aria-labelledby="follower-tab">
+
+                      </div>
+
+
+
+                    <div class="tab-pane fade" id="answer" role="tabpanel" aria-labelledby="answer-tab">
+
+                      <div *ngIf="ans.length; else noans">
+                       <!-- <div *ngFor="let que1 of que"> -->
+                      <div *ngFor="let ans1 of ans">
+
+                        <!-- <h3>{{ans1.answer}}</h3> -->
+                        <!-- <div class="question mt-3">
+                          <a href="#"> {{que1.question}}
+                            Why does my JavaScript code receive a "No 'Access-Control-Allow-Origin' header is present on?
+                          </a>
+                       </div> -->
+                       <div class="info">
+                         {{ans1.answer}}
+                        <!-- Mod note: This question is about why Postman is not subject to CORS restrictions in the same way an XMLHttpRequest is. … I know that the API or remote resource must set the header, but why did it work when I made the request via the Chrome extension Postman? -->
+                       </div>
+                       <!-- <div class="bottom">
+                         <a href="#"><img id="like" class="imghw mt-2" src="../../assets/assets/img/icon/like4.jpg" alt="like" width="30"></a><span class="mt-2">7.4K</span>
+                         <a href="#"><img  class="imghw ml-3 mt-2" src="../../assets/assets/img/icon/dislikee.jpg" alt="dislike" width="30"></a><span class="mt-2">4.4K</span>
+                         <a class="ml-3" href="#"><img class="imghw mt-2 " src="../../assets/assets/img/icon/share2.jpg" alt="share"width="30"></a><span class="ml-2 mr-4 mt-2" >21</span>
+                         </div> -->
+
+                    </div>
+                  <!-- </div> -->
+                  </div>
+
+                  <ng-template #noans>
+                    <h3>You haven't answer any question yet.</h3>
+                    <!-- <button class="mt-3 ml-4" mat-raised-button color="primary" (click)="giveans()">Give Answer</button> -->
+                  </ng-template>
+
+                  </div>
+
+                    <div class="tab-pane fade" id="follower" role="tabpanel" aria-labelledby="follower-tab">
 
                       <h3>No followers yet</h3>
 
@@ -289,7 +314,6 @@
         </div>
     </form>
 </div>
-
 
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

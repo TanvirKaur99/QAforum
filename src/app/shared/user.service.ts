@@ -53,7 +53,7 @@ export class UserService {
     dateofbirth:'',
     workexperience:'',
     address:'',
-    user:this.getuserId()
+    userid:this.getuserId()
   };
 
 
@@ -91,8 +91,9 @@ export class UserService {
     return this.http.get('http://localhost:3000/displaycred/'+id);
   }
 
-
-
+  updatecredentials(selectedcred:Addcredentials){
+    return this.http.put(`${'http://localhost:3000/updateCredentials'}/${this.getuserId()}`,selectedcred);
+  }
 
   addQuePost(quepost:PostQue)
   {

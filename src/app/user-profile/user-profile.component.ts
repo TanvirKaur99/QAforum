@@ -5,6 +5,7 @@ import { EditprofileComponent } from '../editprofile/editprofile.component';
 //import { AddcredentialsComponent } from '../addcredentials/addcredentials.component';
 //import{AddQuestionComponent} from '../add-question/add-question.component';
 import { MatDialog } from '@angular/material/dialog';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-user-profile',
@@ -74,9 +75,9 @@ export class UserProfileComponent implements OnInit {
   //for displaying the credentials by the user
   this.userservice.displaycredentials(this.userservice.getuserId()).subscribe((res)=>{
          this.credentialdata=res;
-        console.log(res);
+         console.log(res);
          this.cred=this.credentialdata.data;
-         console.log(this.cred[0]);
+
      }
      ,(err)=>{
      console.log(err);
@@ -92,21 +93,25 @@ askque(){
   }
 
   addcred(){
-    // const dialogRef= this.dialog.open(AddcredentialsComponent,{
-    //   height: '800px',
-    //   width: '800px'});
-     this.router.navigateByUrl('/addCredentials')
+    if(this.cred.length==0){
+      this.router.navigateByUrl('/addCredentials')
+      }
+      else{
+        alert("credentials already added");
+      }
 
   }
- logout(){
-  // console.log(this.userservice.deleteToken());
-  console.log(this.userservice.deleteToken());
-  this.router.navigateByUrl('/login');
- }
+
  editprofile(){
  // this.dialog.open(EditprofileComponent);
  this.router.navigateByUrl('/editprofile')
+}
 
- }
+editcred()
+{
+  this.router.navigateByUrl('/editcredentials')
+}
+onadd(f:NgForm){
 
+}
 }

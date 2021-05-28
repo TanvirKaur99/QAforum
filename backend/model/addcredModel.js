@@ -1,4 +1,4 @@
-  
+
 const mongoose=require('mongoose');
 require('./registerModel');
 
@@ -21,7 +21,7 @@ var addcredSchema=mongoose.Schema({
    workexperience:{
      type:String
    },
-   user:{
+   userid:{
     type:mongoose.Schema.Types.ObjectId,
     ref:'userRegister'
   }

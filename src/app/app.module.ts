@@ -30,6 +30,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { EditprofileComponent } from './editprofile/editprofile.component';
 import { AddcredentialsComponent } from './addcredentials/addcredentials.component';
 import { AuthGuard } from './shared/auth.guard';
+import { EditCredentialsComponent } from './edit-credentials/edit-credentials.component';
 
 
 
@@ -55,6 +56,7 @@ import { AuthGuard } from './shared/auth.guard';
     LogoutComponent,
     EditprofileComponent,
     AddcredentialsComponent,
+    EditCredentialsComponent,
 
   ],
   imports: [

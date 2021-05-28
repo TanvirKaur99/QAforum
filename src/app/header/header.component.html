@@ -38,7 +38,8 @@
 <mat-menu #menu="matMenu" class="optionmenu">
   <button  mat-menu-item class="d-block btn-block"><img src="../../assets/assets/img/icon/userimage.png" width="35" alt=""></button>
   <button mat-menu-item  class="btn-block mt-2">
-    <p class="namebtn"  *ngIf="userservice.loggedin()" (click)="profileop()">{{userinfo.name}}<i class="bi bi-arrow-right-circle-fill"></i></p></button>
+
+    <p class="namebtn" *ngIf="userservice.loggedin()" (click)="profileop()">{{userinfo.name}}<i class="bi bi-arrow-right-circle-fill"></i></p></button>
   <mat-divider></mat-divider>
   <!-- <button mat-menu-item><i class="bi bi-bookmark"></i>Messages</button>
   <button mat-menu-item>Create Ad</button>

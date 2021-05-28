@@ -56,9 +56,7 @@ export class QuestionsComponent implements OnInit {
   this.router.navigateByUrl('/addQuestion');
   }
 
-  // askque(){
-  //   this.router.navigateByUrl('/addQuestion');
-  // }
+
   ansQue(){
     this.router.navigateByUrl('/answers');
   }

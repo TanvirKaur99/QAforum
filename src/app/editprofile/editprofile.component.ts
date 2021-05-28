@@ -12,13 +12,13 @@ import { UserService } from '../shared/user.service';
 export class EditprofileComponent implements OnInit {
 
 
-  selected!:User;
+
   id:any;
   userdata:any=[];
   userinfo:any=[];
   edituser:any=[];
   edit:any=[];
-  updateform!:NgForm;
+
 
   constructor(public userservice:UserService, private router:Router) {
 
@@ -39,8 +39,9 @@ export class EditprofileComponent implements OnInit {
 
 
   OnSubmit(f:NgForm){
+
      console.log(f.value);
-    this.userservice.updateuser(f.value).subscribe((res)=>{
+     this.userservice.updateuser(f.value).subscribe((res)=>{
       console.log(res);
       this.edituser=res;
       this.edit=this.edituser.data;
@@ -54,5 +55,6 @@ export class EditprofileComponent implements OnInit {
   })
 
 }
+
 
 }

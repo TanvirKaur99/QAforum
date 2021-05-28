@@ -30,12 +30,17 @@ export class HeaderComponent implements OnInit {
 }
 profileop(){
   this.router.navigateByUrl('/userprofile');
-  this.userinfo.name;
+  //this.userinfo.name;
   }
 
 logout(){
+  this.userservice.deleteToken();
+this.userservice.deleteuserId();
+//alert(this.userservice.getuserId())
 this.router.navigateByUrl('/login')
-this.userservice.deleteToken();
+//alert(this.userservice.getToken())
+//alert(this.userservice.getuserId())
+
 }
 
 }

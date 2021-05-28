@@ -5,5 +5,5 @@ export class Addcredentials {
   education!: string;
   address!: string;
   workexperience!: string;
-  user!: any;
+  userid!: any;
 }
