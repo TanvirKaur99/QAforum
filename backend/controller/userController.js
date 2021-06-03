@@ -444,10 +444,12 @@ data:docs
 
 //for displaying image....
 
-// module.exports.displayfile=(req,res)=>{
-//   res.sendFile(__dirname+"/views/file.html");
+module.exports.displayfile=(req,res)=>{
+  res.sendFile(__dirname+"/views/file.html");
 
-// }
+}
+
+
 
 //for uploading profilepicture
 
@@ -475,9 +477,8 @@ var storage=multer.diskStorage({
         console.log("file uploading successfully");
 
         var proimage=new proImgData({
-          user:req.params.user,
-          image:req.file.path,
-          profile:req.body.profile
+          userid:req.params.userid,
+          imagepath:req.file.path
 
         });
 

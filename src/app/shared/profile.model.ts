@@ -1,6 +1,6 @@
 export class Profile {
   userid!:any;
-image!:any;
+  imagepath!:any;
 }
 
 

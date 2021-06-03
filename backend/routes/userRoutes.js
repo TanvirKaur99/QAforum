@@ -32,7 +32,7 @@ approute.get('/allques2',myctrl.allquestions2);
 
 //  approute.put('/like',myctrl.likePost);
 
-//approute.get('/file',myctrl.displayfile);
+approute.get('/file',myctrl.displayfile);
 approute.post('/imageupload/:userid',myctrl.uploadimage);
 
 module.exports = approute;

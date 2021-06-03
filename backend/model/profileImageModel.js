@@ -2,12 +2,12 @@ require('./registerModel');
 const mongoose=require('mongoose');
 
 var profileImageSchema=mongoose.Schema({
-    profile:{
+    userid:{
         type:mongoose.Schema.Types.ObjectId,
         ref:'userRegister',
 
     },
-    image:{
+    imagepath:{
         type:String,
 
     },

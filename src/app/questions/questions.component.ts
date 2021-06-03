@@ -98,12 +98,17 @@ export class QuestionsComponent implements OnInit {
   askque() {
     this.router.navigateByUrl('/addQuestion');
   }
+
   getCategory(category: string) {
-    this.catAnsw = [];
-    if (category == 'Education') {
-      this.answ.forEach((dt: any) => {
-        dt.questionid.category == 'Education' ? this.catAnsw.push(dt) : '';
-      });
-    }
-  }
+  //   this.catAnsw = [];
+  //   if (category == 'Education') {
+  //     this.answ.forEach((dt: any) => {
+  //       dt.questionid.category == 'Education' ? this.catAnsw.push(dt) : '';
+  //     });
+  //   }
+   }
+
+
+
+
 }

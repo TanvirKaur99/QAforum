@@ -65,7 +65,7 @@ export class UserService {
 
   public profileimage:Profile={
     userid:this.getuserId(),
-    image:'',
+    imagepath:'',
   };
 
 
