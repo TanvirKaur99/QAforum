@@ -26,8 +26,6 @@ var addcredSchema=mongoose.Schema({
     ref:'userRegister'
   }
 
-
-
 });
 
 mongoose.model('addcredentials',addcredSchema);

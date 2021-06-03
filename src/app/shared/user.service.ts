@@ -5,6 +5,7 @@ import{Addcredentials} from './addcredentials.model';
 import{Answer} from './answer.model';
 import{PostQue} from './post-que.model';
 //import { Observable } from 'rxjs'
+import{Profile} from './profile.model'
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +17,12 @@ export class UserService {
   userdata:any=[];
   userinfo:any=[];
 
+
+  credentialdata:any=[];
+  cred:any=[];
+
   public newUser : User={
-    name:this.userinfo.name,
+    name:this.userinfo.name,//this is written so that it picks up the values already stored in the response...if u dont change them it will pick ups by default
     email:this.userinfo.email,
     contact:this.userinfo.contact,
     password:'',
@@ -42,19 +47,27 @@ export class UserService {
   public answers:Answer={
     answer:'',
     questionid:'',
-    userid:this.getuserId()
+    userid:this.getuserId(),
+    credentialid:this.getcredid(),
+    date:'',
   };
 
 
   public addcred:Addcredentials={
-    location:'',
-    profile:'',
-    education:'',
-    dateofbirth:'',
-    workexperience:'',
-    address:'',
+    location:this.cred.location,
+    profile:this.cred.profile,
+    education:this.cred.education,
+    dateofbirth:this.cred.dateofbirth,
+    workexperience:this.cred.workexperience,
+    address:this.cred.address,
     userid:this.getuserId()
   };
+
+  public profileimage:Profile={
+    userid:this.getuserId(),
+    image:'',
+  };
+
 
 
 
@@ -117,6 +130,10 @@ displayanswer(id:any){
   return this.http.get('http://localhost:3000/displayans/'+id);
 }
 
+displayallans(){
+  return this.http.get('http://localhost:3000/displayallans');
+}
+
 dispUserAns(id:any){
   return this.http.get('http://localhost:3000/displayUserans/'+id);
 }
@@ -139,6 +156,16 @@ getAllusers(){
 //for getting list of all the questionspo
 getAllQuestions(){
   return this.http.get('http://localhost:3000/allques');
+}
+
+getAllQuestions2(){
+  return this.http.get('http://localhost:3000/allques2/');
+}
+
+
+
+userimage(profilepic:Profile){
+  return this.http.post('http://localhost:3000/imageupload',profilepic);
 }
 
 // login
@@ -200,6 +227,18 @@ deleteToken()
 
    deletequestionid(){
      localStorage.removeItem('questionid');
+   }
+
+
+
+
+
+setcredid(cid:string){
+  localStorage.setItem('credentialid',cid)
+
+}
+   getcredid(){
+    return localStorage.getItem('credendialid')
    }
 
 

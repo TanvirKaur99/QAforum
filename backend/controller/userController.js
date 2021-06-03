@@ -4,6 +4,7 @@ require('../model/postQuesModel');//import postQuesModel
 require('../model/addcredModel');//AddCredentials Model
 require('../model/answerModel');
 require('../model/profileImageModel');//importing profileImage model
+//require('../../forums/src/app/shared/user.service');
 
 
 const mongoose = require('mongoose');
@@ -14,7 +15,7 @@ const multer=require('multer');
 //FOR MODELS VARIABLES
 
 var UserData=mongoose.model('userRegister');//UserData object created for userRegister Model
-var newQuePost=mongoose.model('QPost');//newPost is the reference to the Qpost Model
+var newQuePost=mongoose.model('qpost');//newPost is the reference to the Qpost Model
 var credData=mongoose.model('addcredentials');
 var ansData=mongoose.model('answer');
 var proImgData= mongoose.model('profileImage');//profileImages is the reference to the profileimage
@@ -205,8 +206,8 @@ module.exports.addanswers=(req,res)=>{
   var myanswer=new ansData({
     answer:req.body.answer,
     questionid:req.body.questionid,
-    userid:req.body.userid
-
+    userid:req.body.userid,
+    credentialid:req.body.credentialid
 
   });
 
@@ -229,12 +230,31 @@ module.exports.addanswers=(req,res)=>{
 }
 
 
-
 //display answer of a particular question
 
-module.exports.displayanswer=(req,res)=>{
- // console.log(req.params.questionid)
-  return ansData.find({questionid:req.params.questionid}).populate('questionid').exec().then((docs)=>{
+// module.exports.displayanswer=(req,res)=>{
+//  // console.log(req.params.questionid)
+//   return ansData.find({questionid:req.params.questionid}).populate('questionid').exec().then((docs)=>{
+//     return res.status(200).json({
+//       success:true,
+//       message:'list of answers',
+//       data:docs
+//   })
+// }).catch((err)=>{
+//   return res.status(400).json({
+//     success:false,
+//     message:'error in displaying',
+//     error:err.message
+// })
+// })
+// }
+
+
+
+module.exports.displayUseranswer=(req,res)=>{
+  return ansData.find(
+  // {questionid:req.params.questionid},
+    {userid:req.params.userid}).populate('questionid').populate('userid').exec().then((docs)=>{
     return res.status(200).json({
       success:true,
       message:'list of answers',
@@ -248,29 +268,6 @@ module.exports.displayanswer=(req,res)=>{
 })
 })
 }
-
-module.exports.displayUseranswer=(req,res)=>{
-
-   return ansData.find({userid:req.params.userid}).populate('userid').exec().then((docs)=>{
-     return res.status(200).json({
-       success:true,
-       message:'list of answers',
-       data:docs
-   })
- }).catch((err)=>{
-   return res.status(400).json({
-     success:false,
-     message:'error in displaying',
-     error:err.message
- })
- })
- }
-
-
-
-
-
-
 
 //for updating user
 module.exports.updatedData=(req,res)=>{
@@ -324,7 +321,7 @@ module.exports.updatedData=(req,res)=>{
 // for getting all the questions asked
   var _id = mongoose.Types.ObjectId();
   module.exports.allquestions=(req,res)=>{
-    newQuePost.find({}, {question:1, _id,user:1}).then((docs)=>{
+    newQuePost.find({}, {question:1, _id:1, user:1}).populate('_id').populate('user').then((docs)=>{
   return res.status(200).json({
   success:true,
   message:'questions found',
@@ -344,6 +341,58 @@ module.exports.updatedData=(req,res)=>{
    })
 
   }
+
+  //display answers of all users
+
+var _id = mongoose.Types.ObjectId();
+module.exports.allanswers=(req,res)=>{
+  return ansData.find({},{_id:1, userid:1,questionid:1, credentialid:1, date:1}).populate('_id')
+  .populate('questionid').populate('userid').populate('credentialid').exec().then((docs)=>{
+    return res.status(200).json({
+      success:true,
+      message:'list of all users answers',
+      data:docs
+  })
+}).catch((err)=>{
+  return res.status(400).json({
+    success:false,
+    message:'error in displaying',
+    error:err.message
+})
+})
+}
+
+  // for getting all the questions asked Except the user who is logged in
+  var user = mongoose.Types.ObjectId();
+
+ module.exports.allquestions2=(req,res)=>{
+
+ newQuePost.find({user:{$ne:user._id}}).select({question:1, _id,user:1}).then((docs)=>{
+return res.status(200).json({
+success:true,
+message:'questions found',
+data:docs
+
+})
+
+})
+
+.catch((err)=>{
+  return res.status(400).json({
+    success:false,
+    message:'questions not found',
+    error:err.message
+
+  })
+ })
+
+}
+
+
+
+
+
+
 
   //for liking a post
 

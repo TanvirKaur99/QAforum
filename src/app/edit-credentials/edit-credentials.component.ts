@@ -43,7 +43,7 @@ export class EditCredentialsComponent implements OnInit {
 
   OnSubmit(f:NgForm){
     console.log(f.value);
-   this.userservice.updatecredentials(f.value).subscribe((res)=>{
+    this.userservice.updatecredentials(f.value).subscribe((res)=>{
      console.log(res);
      this.editcred=res;
      this.edit=this.editcred.data;
@@ -57,6 +57,7 @@ export class EditCredentialsComponent implements OnInit {
 
 
 }
+
 
   close(){
     this.router.navigateByUrl('/userprofile');

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { User } from '../shared/user.model';
+//import { User } from '../shared/user.model';
 import { UserService } from '../shared/user.service';
 
 @Component({
@@ -48,7 +48,7 @@ export class EditprofileComponent implements OnInit {
       console.log(this.edit);
 
       alert('Profile Edited sucessfully');
-      this.router.navigateByUrl('/userprofile');
+
   },(err)=>{
     console.log(err);
     alert(' Error in updating profile')
@@ -56,5 +56,7 @@ export class EditprofileComponent implements OnInit {
 
 }
 
-
+back(){
+  this.router.navigateByUrl('/userprofile');
+}
 }

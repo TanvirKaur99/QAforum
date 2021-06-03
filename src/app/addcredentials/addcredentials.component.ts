@@ -26,22 +26,24 @@ export class AddcredentialsComponent implements OnInit {
   }
 
 
-
-     submitcred(f:NgForm){
+  submitcred(f:NgForm){
     this.userservice.addcredentials(f.value).subscribe((res)=>{
-      console.log(res);
-      alert('credentials added successfully')
-      this.router.navigateByUrl('/userprofile')
-     // this.dialog.closeAll();
+          //  console.log(res);
+           this.credentialdata=res;
+            this.cred=this.credentialdata.data;
+            console.log(this.cred);
+
+      //  location.reload();
+       this.router.navigateByUrl('/userprofile')
+
 
     },(err)=>{
       console.log(err);
-      alert('Error in adding credentials')
     }
     )
 
   }
   close(){
-    this.router.navigateByUrl('/userprofile');
+    //this.router.navigateByUrl('/userprofile');
   }
 }

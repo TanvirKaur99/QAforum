@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-contact',
@@ -8,7 +9,7 @@ import { NgForm } from '@angular/forms';
 })
 export class ContactComponent implements OnInit {
 
-  constructor() { }
+  constructor( public router:Router,) { }
 
   ngOnInit(): void {
   }
@@ -24,6 +25,9 @@ export class ContactComponent implements OnInit {
   getValues(f:NgForm){
     console.log(f.value);
 
+}
+back(){
+this.router.navigateByUrl('')
 }
 
 }

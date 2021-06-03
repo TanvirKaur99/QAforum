@@ -9,6 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Orelega+One&display=swap" rel="stylesheet">
 </head>
 <body>
+  <mat-card class="card">
   <div class=" mainbox mx-auto ">
     <button type="button" class="close" (click)="close()" aria-label="Close">
       <span aria-hidden="true">&times;</span>
@@ -16,6 +17,7 @@
     <br><br>
     <!-- mt-5 shadow-lg p-3 mb-5 bg-body rounded -->
     <div  class="mx-auto mt-4 heading">Add Question</div>
+
     <div class="container tips mt-4 pt-2 shadow-sm  bg-body rounded ">
       <p>Tips for getting good answers quickly</p>
       <ul>
@@ -30,6 +32,7 @@
         </li>
       </ul>
      </div>
+
      <div class="container pl-4 divw">
        <span class="username ml-4 text-cap"><img src="../../assets/assets/img/icon/userimage.png" width="30"  alt="userimg">{{userinfo.name}}</span>
        <!-- <span> asked to</span> -->
@@ -83,9 +86,10 @@
        </mat-form-field>
 
        <button mat-raised-button class="subutton mt-2 mb-3 " type="submit">Submit</button>
+       <!-- <button mat-raised-button class="subutton mt-2 mb-3 " type="submit" (click)="close()">OK</button> -->
       </form>
      </div>
    </div>
-
+  </mat-card>
 </body>
 </html>

@@ -18,7 +18,7 @@ select.to{
 .tips{
   background-color: #EBF0FF;
   color: #2E69FF;
-  width: 80%;
+  width: 85%;
 }
 .tips p {
   font-size: 1.1rem;
@@ -42,3 +42,7 @@ button.subutton{
 /* .divw{
   width:70%;
 } */
+
+mat-card {
+  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}

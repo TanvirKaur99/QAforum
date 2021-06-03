@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UserService } from '../shared/user.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { UserService } from '../shared/user.service';
 export class AnswersComponent implements OnInit {
 
 
-  constructor(public userservice:UserService) { }
+  constructor(public userservice:UserService,private router:Router) { }
 
   id:any;
   qid:any;
@@ -23,6 +24,9 @@ export class AnswersComponent implements OnInit {
 
   ansresponse:any=[];
   ans:any=[];
+
+  credentialdata:any=[];
+  cred:any=[];
 
 
   ngOnInit(): void {
@@ -39,33 +43,55 @@ export class AnswersComponent implements OnInit {
   this.userinfo=this.userdata.data;
   console.log(this.userinfo);//give userinfo on console without success and msg in backend format
 
-  })
 
-   this.userservice.displayQPost(this.userservice.getuserId()).subscribe((res)=>{
+
+  this.userservice.getAllQuestions().subscribe((res)=>{
+    this.id=this.userservice.getuserId();
     this.quesresponse=res;
-    console.log(res);
+    console.log(this.quesresponse)
     this.que=this.quesresponse.data;
-   // console.log(this.que[0]._id);
-   console.log(this.que)
-    console.log("question added successfully");
-
+    console.log(this.que)
   },
   (err)=>{
-    console.log(err);
+      console.log(err);
+     })
   })
+
+
+  this.userservice.displaycredentials(this.id).subscribe((res)=>{
+    // console.log(res)
+         this.credentialdata=res;
+          console.log(this.credentialdata);
+          this.cred=this.credentialdata.data;
+          console.log(this.cred);
+  }
+  ,(err)=>{
+    console.log(err);
+
+  })
+
+
+
 
   }
   postans(f:NgForm){
     console.log(f.value);
-    this.userservice.addanswer(f.value).subscribe((res)=>{
-      console.log(res);
-     console.log("answer added successfully");
-     alert('Answer added successfuly')
+   this.userservice.addanswer(f.value).subscribe((res)=>{
+     this.ansresponse=res;
+     console.log(res);
+     this.ans=this.ansresponse.data;
+     console.log(this.ans)
+     alert("answer added successfully");
+     this.router.navigateByUrl('/profile');
+
    }
    ,(err)=>{
      console.log(err);
-     alert('Error in sending answer')
    })
  }
+
+ close(){
+  this.router.navigateByUrl('/userprofile')
+}
 
 }

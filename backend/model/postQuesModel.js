@@ -33,4 +33,4 @@ const mongoose=require('mongoose');
 
  })
 
- mongoose.model('QPost',postQueSchema);
+ mongoose.model('qpost',postQueSchema);

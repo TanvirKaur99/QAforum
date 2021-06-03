@@ -22,7 +22,7 @@
           <nav>
             <ul class="greyleft">
               <li  class="sidenav">
-                <a href="#">Education</a>
+                <a (click)="getCategory('Education')">Education</a>
               </li>
               <li class="sidenav">
                 <a href="#">Music</a>
@@ -56,23 +56,35 @@
     <div class="col-7 col shadow p-3 mb-5 bg-body rounded">
         <div class="container Heading pt-2 text-center shadow-sm p-s bg-body rounded">
          <p> <button mat-button (click)="openDialogue()" >Ask Your Question</button></p>
-           <!-- <p><a href="" (click)="openDialogue()">Share a Question or link?</a></p> -->
+
         </div>
 
         <!-- center div 1st part with Q and A -->
 
-        <div class="container Heading shadow-sm p-3 bg-body rounded "  *ngFor="let que1 of que">
-           <span class="username"><img src="../../assets/assets/img/icon/userimage.png" width="30"  alt="userimg"></span>
-           <span class="follow ml-2"><a href="#">Follow</a></span>
-           <span class="close mt-2"><a href="#"><img src="../../assets/assets/img/icon/close-window.png" width="30" alt="abc"></a></span><br>
-           <span class="follow mt-0">Lives in Rajasthan,India.</span>
-           <span class="follow">February 15</span>
+        <div class="container Heading shadow-sm p-3 bg-body rounded "  *ngFor="let ans1 of catAnsw">
+
+           <span class="username"><img src="../../assets/assets/img/icon/userimage.png" width="30"  alt="userimg"> {{ans1.userid.name}}</span><br>
+
+           <!-- <span class="close mt-2"><a href="#"><img src="../../assets/assets/img/icon/close-window.png" width="30" alt="abc"></a></span><br> -->
+           <span class="follow mt-0"> lives in {{ans1.credentialid.address}} ,</span>
+           <span class="follow mt-0"> {{ans1.credentialid.location}}  </span>
+           <span class="follow">{{ans1._id.date}}</span>
+           <span class="follow ml-2"><a href="#"></a>Follow</span>
+
+           <!-- For displaying the questions -->
+
            <div class="question mt-3">
-              <a href="#">{{que1.question}}</a>
-           </div>
-           <!-- <div class="info">
-            Mod note: This question is about why Postman is not subject to CORS restrictions in the same way an XMLHttpRequest is. … I know that the API or remote resource must set the header, but why did it work when I made the request via the Chrome extension Postman?
-           </div> -->
+              <a href="#">
+                Que:{{ans1.questionid.question|titlecase}}
+              </a>
+            </div>
+
+            <!-- For displaying the answers -->
+            <div class="info">
+              Ans:{{ans1._id.answer|titlecase}}
+             </div>
+
+
            <div class="bottom">
              <a href="#"><img id="like" class="imghw" src="../../assets/assets/img/icon/facebook-like.png" width="30" alt="like"></a><span>7.4K</span>
              <a href="#"><img  class="imghw ml-3" src="../../assets/assets/img/icon/dislike.png" width="30" alt="dislike"></a>
@@ -96,26 +108,59 @@
                     <div class="customfont Heading containern shadow-sm p-3 bg-body rounded ">
                       <a href="#"><img src="../../assets/assets/img/icon/bold.png" width="30" class="mr-3" alt="bold"></a>
                       <a href="#"><img src="../../assets/assets/img/icon/italic.png" width="30" class="mr-3" alt="italic"></a>
-                      <a href="#"><img src="../../assets/svg(s)/ol.svg" width="20" class="mr-4" alt="ordered list"></a>
+
                       <a href="#"><img src="../../assets/assets/img/icon/list.png" width="34" class="mr-2 " alt="unordered list"></a>
                       <span ml-auto>
                         <a href="#"><img src="../../assets/assets/img/icon/numbered-list.png" width="25" class="ml-2" alt="ordered"></a>
                       </span>
                     </div>
+
+
+
                     <div class="inputans">
+
+
+                      <form #answer="ngForm" (ngSubmit)="postans(answer)">
+
+                        <input
+                        type="hidden"
+                        name="userid"
+                        #userid="ngModel"
+                        [(ngModel)]="userservice.answers.userid">
+
+                        <input
+                        type="hidden"
+                        name="questionid"
+                        #questionid="ngModel"
+                        [(ngModel)]="ans1.questionid._id"
+                        >
+
+                         <input
+                        type="hidden"
+                        name="credentialid"
+                        #credentialid="ngModel"
+                        [(ngModel)]="ans1.credentialid._id"
+                        >
+
                       <mat-form-field class="ansfield">
-                        <textarea matInput name="answerText" class="answerText"  rows="3" placeholder="Write Answer" ></textarea>
+                        <textarea matInput name="answer" class="answerText"  rows="3" placeholder="Write Answer"
+                        #answer="ngModel"
+                       [(ngModel)]="userservice.answers.answer" ></textarea>
                       </mat-form-field>
                       <button type="submit" class="postbtn" mat-stroked-button >Post</button>
-                      <button type="button" class="draftbtn mt-2" mat-stroked-button >Save Draft</button>
+                      <!-- <button type="button" class="draftbtn mt-2" mat-stroked-button >Save Draft</button> -->
 
-
+                     </form>
                     </div>
                   </div>
-                </div>
+
+
+                  </div>
+
                </mat-expansion-panel>
              </mat-accordion>
            </div>
+
         </div>
     </div>
 
@@ -168,7 +213,7 @@
       </div>
   </div>
 </div>
-<!-- <app-footer></app-footer> -->
+
 
 </body>
 </html>

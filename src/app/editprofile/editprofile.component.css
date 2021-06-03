@@ -1,0 +1,15 @@
+.spacing{
+  margin-left: 20px;
+}
+/* mat-card{
+  height:50%;
+  width:50%
+} */
+mat-card{
+  width: 400px;
+  height: 400px;
+
+  margin-left:auto;
+  margin-right:auto;
+  vertical-align:middle;
+}

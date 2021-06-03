@@ -38,7 +38,8 @@ export class AddQuestionComponent implements OnInit {
     this.userservice. addQuePost(f.value).subscribe((res)=>{
     console.log(res);
     alert('Question submitted successfully')
-    this.dialog.closeAll();
+
+
 
     },(err)=>{
       console.log(err);

@@ -9,11 +9,14 @@
 <body>
 
   <div class="container-fluid maindiv">
+    <button type="button" class="close" (click)="close()" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
     <div class="row">
 
     <!-- Left Div -->
 
-      <div class="col-2 col ">
+      <div class="col-md-2 col ">
         <div class=" container  shadow p-3 bg-body rounded">
           <div class="container-fluid Heading pt-2 shadow-sm p-3 bg-body rounded">
              <p><a href="#">Question</a></p>
@@ -21,15 +24,15 @@
           <div class="container-fluid Heading pt-2 shadow-sm p-3 bg-body rounded">
             <nav>
               <ul class="greyleft">
-                <!-- <li  class="sidenav">
+                <li  class="sidenav">
                   <a href="#">Questions for you</a>
-                </li> -->
+                </li>
                 <li  class="sidenav">
                   <a href="#">Most asked questions</a>
                 </li>
-                <!-- <li  class="sidenav">
+                <li  class="sidenav">
                   <a href="#">Questions for you</a>
-                </li> -->
+                </li>
               </ul>
             </nav>
           </div>
@@ -38,15 +41,15 @@
 
      <!-- middile div -->
 
-    <div class="col-7 col shadow-lg p-3 mb-5 bg-body rounded">
+    <div class="col-md-7 col shadow-lg p-3 mb-5 bg-body rounded">
       <div class="container Heading pt-2 text-center shadow-sm p-3 bg-body rounded">
         <p><a href="#">Questions for you</a></p>
       </div>
 
 
-       <!-- div1 to show question -->
+      <!--  div1 to show question -->
       <div class="toanswer">
-        <div class="container Heading shadow-sm p-3 bg-body rounded " *ngFor="let que1 of que;let i=index">
+        <div class="container Heading shadow-sm p-3 bg-body rounded " *ngFor="let que1 of que">
           <span class="follow">
             Question added.
           </span>
@@ -54,8 +57,7 @@
             Hindi(language)
           </span>
           <div class="question ">
-            <a href="#">{{que1.question}}</a>
-
+            <a href="#">{{que1._id.question}}</a>
           </div>
           <span class="answerinfo">
             No answer yet .
@@ -66,18 +68,16 @@
           <!-- div1.1 -->
           <div class="bottomdiv">
             <!-- <button class="mt-1" data-toggle="collapse" data-target="#collapseExample"  mat-raised-button><img src="../../assets/assets/img/icon/answer.png" width="20" class="mt-1 mr-1" alt="answer">Answer</button>
-            <button mat-raised-button class="ml-2"><img src="../../assets/assets/img/icon/follow.png" width="20" alt="follow">Follow</button>
-            <button mat-raised-button class="ml-2"><img src="../../assets/assets/img/icon/" width="25" alt="Pass">Pass</button> -->
+            <button mat-raised-button class="ml-2"><img src="../../assets/assets/img/icon/follow.png" width="20" alt="follow">Follow</button> -->
+            <!-- <button mat-raised-button class="ml-2"><img src="../../assets/assets/img/icon/" width="25" alt="Pass">Pass</button> -->
             <div class="rightbottom ml-5 mt-2">
-              <span class="dislike"><a href="#" ><img src="../../assets/assets/img/icon/dislike.png" width="28"  alt="dislike"></a></span>
-              <span class="more ml-3"><a href="#"><img src="../../assets/assets/img/icon/more.png" width="34" alt="more"></a></span>
+              <span class="dislike"><a href="#" ><img src="../../assets/assets/img/icon/dislikee.jpg" width="28"  alt="dislike"></a></span>
+              <span class="more ml-3"><a href="#"><img src="../../assets/assets/img/icon/more.png" width="30" alt="more"></a></span>
             </div>
 
 
 
-             <!-- div1.2 for show answer panel -->
-
-
+            <!--  div1.2 for show answer panel -->
                <mat-accordion>
               <mat-expansion-panel hideToggle class="expansiontittle mt-3">
                 <mat-expansion-panel-header class="expansiontittle">
@@ -87,26 +87,21 @@
                 </mat-expansion-panel-header>
                 <div>
                   <div class="answered"  >
-
                     <div class="container Heading shadow-sm p-3 bg-body rounded mt-3">
-                      <span class="username"><img src="../../assets/assets/img/icon/userimage.png" width="30"  alt="userimg">{{userinfo.name}}</span>
+                      <span class="username"><img src="../../assets/assets/img/icon/userimg.jpg" width="30"  alt="userimg">{{userinfo.name}}</span>
                     </div>
-
                     <div class="customfont Heading containern shadow-sm p-3 bg-body rounded ">
-                      <a href="#"><img src="../../assets/assets/img/icon/bold.png" width="30" class="mr-3" alt="bold"></a>
-                      <a href="#"><img src="../../assets/assets/img/icon/italic.png" width="30" class="mr-3" alt="italic"></a>
-
-                      <a href="#"><img src="../../assets/assets/img/icon/list.png" width="34" class="mr-2" alt="unordered list"></a>
+                      <a href="#"><img src="../../assets/assets/img/icon/bold.png" width="20" class="mr-3" alt="bold"></a>
+                      <a href="#"><img src="../../assets/assets/img/icon/italic.png" width="20" class="mr-3" alt="italic"></a>
+                      <!-- <a href="#"><img src="../../assets/svg(s)/ol.svg" width="20" class="mr-4" alt="ordered list"></a> -->
+                      <a href="#"><img src="../../assets/assets/img/icon/list.png" width="28" class="mr-2" alt="unordered list"></a>
                       <span ml-auto>
-                        <a href="#"><img src="../../assets/assets/img/icon/numbered-list.png" width="25" class="ml-2" alt="ordered"></a>
+                        <a href="#"><img src="../../assets/assets/img/icon/ordered.png" width="18" class="ml-2" alt="ordered"></a>
                       </span>
                     </div>
-
-
-
-
-
                     <div class="inputans">
+                      <div *ngFor="let cred1 of cred">
+
                       <form #answer="ngForm" (ngSubmit)="postans(answer)">
 
                         <input
@@ -115,19 +110,23 @@
                         #userid="ngModel"
                         [(ngModel)]="userservice.answers.userid">
 
-
-
                         <input
                         type="hidden"
                         name="questionid"
                         #questionid="ngModel"
                         [(ngModel)]="que1._id"
+
                         >
 
+                          <input
+                           type="hidden"
+                           name="credentialid"
+                           #credentialid="ngModel"
+                           [(ngModel)]="cred1._id"
+                          >
 
                       <mat-form-field class="ansfield">
-                        <textarea matInput name="answer" class="answerText"  rows="3" placeholder="Write Answer "
-
+                        <textarea matInput name="answer" class="answerText"  rows="3" placeholder="Write Answer"
                         #answer="ngModel"
                         [(ngModel)]="userservice.answers.answer"
                         ></textarea>
@@ -138,9 +137,11 @@
                       <button type="button" class="draftbtn mt-2" mat-stroked-button >Save Draft</button>
 
                     </form>
+                  </div>
                     </div>
                   </div>
                 </div>
+
                </mat-expansion-panel>
              </mat-accordion>
           </div>
@@ -149,13 +150,11 @@
 
 
 
-
-
     </div>
 
      <!-- Right div -->
 
-      <div class="col-3 col shadow p-3 mb-5 bg-body rounded righttable">
+      <div class="col-md-3 col shadow p-3 mb-5 bg-body rounded righttable">
         <div class="container Heading pt-2 text-center shadow-sm p-3 bg-body rounded">
           <p><a href="#">Add Topics you know</a></p>
         </div>
@@ -167,7 +166,7 @@
     </div>
   </div>
   <div>
-
+    <app-footer></app-footer>
   </div>
 </body>
 </html>
