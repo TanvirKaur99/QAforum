@@ -20,7 +20,10 @@
       <div class="signup-content">
           <div class="signup-form">
               <h2 class="form-title">Sign up</h2>
-              <form method="POST" class="register-form" id="register-form"  #registerform="ngForm" (ngSubmit)="addData(registerform)">
+              <!-- '#registerform' is the id and 'registerform' is passed to get all the values the form -->
+
+
+               <form method="POST" class="register-form" id="register-form"  #registerform="ngForm" (ngSubmit)="addData(registerform)">
                   <div class="form-group">
                       <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
                       <input type="text" name="name" id="name" placeholder="Your Name"
@@ -29,10 +32,10 @@
                       [(ngModel)]="userservice.newUser.name"
                       [ngClass]="{'is-invalid':registerform.submitted && name.invalid}"/>
                   </div>
-
+                   <!-- on invalid error will be shown -->
                   <mat-error *ngIf="registerform.submitted && name.invalid">
                     <mat-error *ngIf="name.errors?.required">
-                      Enter our Name
+                      Enter Your Name
                     </mat-error>
                   </mat-error>
 

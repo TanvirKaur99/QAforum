@@ -41,7 +41,7 @@
 
     <p class="namebtn" *ngIf="userservice.loggedin()" (click)="profileop()">{{userinfo.name}}<i class="bi bi-arrow-right-circle-fill"></i></p></button>
   <mat-divider></mat-divider>
-  <!-- <button mat-menu-item><i class="bi bi-bookmark"></i>Messages</button>
+  <button mat-menu-item><i class="bi bi-bookmark"></i>Messages</button>
   <button mat-menu-item>Create Ad</button>
   <button mat-menu-item>Your Content</button>
   <button mat-menu-item><mat-icon>bookmark</mat-icon>Bookmarks</button>
@@ -49,7 +49,11 @@
   <mat-divider></mat-divider>
   <button mat-menu-item>Settings</button>
   <button mat-menu-item>Languages</button>
-  <button mat-menu-item>help</button>-->
+  <button mat-menu-item><mat-icon>drafts</mat-icon>Support</button>
+
+
+
+
 
   <button mat-menu-item (click)="logout()">Logout</button>
 

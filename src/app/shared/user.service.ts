@@ -65,7 +65,7 @@ export class UserService {
 
   public profileimage:Profile={
     userid:this.getuserId(),
-    imagepath:'',
+    image:'',
   };
 
 
@@ -162,12 +162,16 @@ getAllQuestions2(){
   return this.http.get('http://localhost:3000/allques2/');
 }
 
-
-
-userimage(profilepic:Profile){
-  return this.http.post('http://localhost:3000/imageupload',profilepic);
+userimage(userid:any, image:any){
+  const formdata:any=new FormData();
+  formdata.append('userid', userid)
+  formdata.append('image',image)
+  return this.http.post('http://localhost:3000/imageupload',formdata);
 }
 
+displayuserimage(id:any){
+  return this.http.get('http://localhost:3000/displayimage/'+id);
+}
 // login
 loggedin(){
   return localStorage.getItem('usertoken');

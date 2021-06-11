@@ -4,13 +4,16 @@ require('../model/postQuesModel');//import postQuesModel
 require('../model/addcredModel');//AddCredentials Model
 require('../model/answerModel');
 require('../model/profileImageModel');//importing profileImage model
-//require('../../forums/src/app/shared/user.service');
+
 
 
 const mongoose = require('mongoose');
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const multer=require('multer');
+const nodemailer = require("nodemailer");
+const crypto=require('crypto');
+
 
 //FOR MODELS VARIABLES
 
@@ -345,8 +348,9 @@ module.exports.updatedData=(req,res)=>{
   //display answers of all users
 
 var _id = mongoose.Types.ObjectId();
+
 module.exports.allanswers=(req,res)=>{
-  return ansData.find({},{_id:1, userid:1,questionid:1, credentialid:1, date:1}).populate('_id')
+  return ansData.find({},{ sort: { 'date' : 1 } },{_id:1, userid:1,questionid:1, credentialid:1, date:1}).populate('_id')
   .populate('questionid').populate('userid').populate('credentialid').exec().then((docs)=>{
     return res.status(200).json({
       success:true,
@@ -388,14 +392,7 @@ data:docs
 
 }
 
-
-
-
-
-
-
   //for liking a post
-
 
   // mongoose.exports.likePost=(req,res)=>{
 
@@ -449,8 +446,6 @@ module.exports.displayfile=(req,res)=>{
 
 }
 
-
-
 //for uploading profilepicture
 
 var storage=multer.diskStorage({
@@ -466,39 +461,188 @@ var storage=multer.diskStorage({
 
 
 
-  var upload=multer({storage:storage}).single('file');
+  var upload=multer({storage:storage}).single('image');
+
 
   module.exports.uploadimage=(req,res)=>{
     upload(req,res,(err)=>{
-      if(err)
+      if(err){
       console.log("error in uploading file" +err);
-
-      else{
+      }else{
+        console.log((req.file))
         console.log("file uploading successfully");
+        const image=req.file.path;
+        console.log(image)
+        // var proimage=new proImgData({
+        //  // userid:req.params.userid,
+       const userid=req.body.userid
+       console.log(userid)
+        //   image:req.file.path
 
-        var proimage=new proImgData({
-          userid:req.params.userid,
-          imagepath:req.file.path
+        // });
 
-        });
-
-        proimage.save().then((docs)=>{
-          return res.status(200).json({
-            success:true,
-            message:"image saved successfully",
-            data:docs
-          })
+        proImgData.findOneAndUpdate({userid:req.body.userid},{$set:{image:req.file.path}
         })
-             .catch((err)=>{
-             return res.status(404).json({
-               success:false,
-               message:"error in uploading file",
-               error:err.message
-             })
-             })
+        .then((docs)=>{
+console.log(docs)
+            return res.status(200).json({
+                success:true,
+                message:'Profile image updated',
+                data:docs
+            })  })
+            .catch((err)=>{
+                return res.status(401).json({
+                    success:false,
+                    message:"error in updating profilepicture",
+                    error:err.message
+                })
+            })
 
-             console.log(req.file);
+
+    //     proimage.save().then((docs)=>{
+    //       return res.status(200).json({
+    //         success:true,
+    //         message:"image saved successfully",
+    //         data:docs
+    //       })
+    //     })
+    //          .catch((err)=>{
+    //          return res.status(404).json({
+    //            success:false,
+    //            message:"error in uploading file",
+    //            error:err.message
+    //          })
+    //          })
+
+    //          console.log(req.file);
+
+     }
+   })
+  }
+
+
+
+
+  module.exports.displayimage=(req,res)=>{
+    return proImgData.find({userid:req.params.userid}).populate('userid').exec().then((docs)=>{
+      return res.status(200).json({
+        success:true,
+        message:'display image',
+        data:docs
+    })
+  }).catch((err)=>{
+    return res.status(400).json({
+      success:false,
+      message:'error in displaying',
+      error:err.message
+  })
+  })
+  }
+
+
+
+  //update image
+
+  module.exports.updateimage=(req,res)=>{
+
+    var updateimage={image:req.body.image}
+
+    proImgData.findOneAndUpdate({userid:req.params.userid},{$set:updateimage},{new:true})
+    .then((docs)=>{
+
+        return res.status(200).json({
+            success:true,
+            message:'Profile image updated',
+            data:docs
+        })  })
+        .catch((err)=>{
+            return res.status(401).json({
+                success:false,
+                message:"error in updating profilepicture",
+                error:err.message
+            })
+        })
+
+  }
+
+  let transporter = nodemailer.createTransport({
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true, // true for 465, false for other ports
+    //requireTLS:true,
+    auth: {
+      user: 'qaforum2021@gmail.com ', // generated ethereal user
+      pass: 'qa2021forum', // generated ethereal password
+    }
+  });
+
+
+
+
+
+// Forget Password
+module.exports.forgotpass=(req,res)=>{
+   // console.log(req.body.email)
+   if(!req.body.email){
+       return res.status(500).json({
+           msg:"Email is required"
+       })
+   }
+   UserData.findOne({email:req.body.email}).then(user=>{
+        if(!user){
+            res.status(500).json({
+                error:"Email is not registered in database"
+            })
+        }
+        const token=crypto.randomBytes(16).toString('hex');
+        const link='http://localhost:3000/users/reset-password/'+token;
+       // console.log(token);
+       user.resetToken=token;
+       user.expireToken=Date.now+36000000;
+       user.save().then((result)=>{
+        transporter.sendMail({
+          from: '"QAForum 👻" <qaforum2021@gmail.com>', // sender address
+           //to: "sanghatanvir9299@gmail.com",
+            to: user.email, // list of receivers
+            subject: "Password Activated ✔", // Subject line
+            text: "Please click on this link"+" "+link+" "+ 'to reset password', // plain text body
+
+            })
+            res.status(200).json({
+                msg:"Please check your email to reset password"
+            })
+       })
+ })
+
+}
+
+//reset password...
+
+module.exports.resetPass=(req,res)=>{
+  const getToken=req.params.token
+  //console.warn(getToken)
+  const newPassword=req.body.password
+  UserData.findOne({resetToken:getToken,expireToken:{$gt:Date.now()}}).then(user=>{
+      if(!user){
+          return res.status(500).json({
+              error:"Token time session is expired now"
+          })
 
       }
-    })
-  }
+      bcrypt.hash(newPassword,10,function(err,hash){
+          user.password=hash
+          user.resetToken=undefined
+          user.expireToken=undefined
+          user.save().then((result)=>{
+              res.json({
+                  msg:"Password updated successfully"
+              })
+          })
+      })
+  }).catch(err=>{
+      console.log(err)
+  })
+}
+
+
+

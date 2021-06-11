@@ -4,7 +4,7 @@ const mongoose=require('mongoose');
 
     question:{
         type:String,
-        required:[true,'Post should be enterd']
+        required:[true,"question is required"]
     },
 
     category:{

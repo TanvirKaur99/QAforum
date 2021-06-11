@@ -33,6 +33,11 @@ approute.get('/allques2',myctrl.allquestions2);
 //  approute.put('/like',myctrl.likePost);
 
 approute.get('/file',myctrl.displayfile);
-approute.post('/imageupload/:userid',myctrl.uploadimage);
+approute.post('/imageupload',myctrl.uploadimage);
+
+approute.put('/updateimg/:userid',myctrl.updateimage);
+approute.get('/displayimage/:userid',myctrl.displayimage);
+approute.post('/forgot-password',myctrl.forgotpass);
+approute.post('/reset-password/:token',myctrl.resetPass);
 
 module.exports = approute;

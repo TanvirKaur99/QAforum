@@ -63,7 +63,7 @@ export class QuestionsComponent implements OnInit {
 
         console.log(this.answ);
 
-        alert(this.answ);
+        // alert(this.answ);
       },
       (err) => {
         console.log(err);
@@ -100,15 +100,72 @@ export class QuestionsComponent implements OnInit {
   }
 
   getCategory(category: string) {
-  //   this.catAnsw = [];
-  //   if (category == 'Education') {
+    this.catAnsw = [];
+    if (category == 'Education') {
+      this.answ.forEach((dt: any) => {
+        dt.questionid.category == 'Education' ? this.catAnsw.push(dt) : '';
+      });
+    }
+  }
+
+  getCategory2(category: string) {
+    this.catAnsw = [];
+    if (category == 'Music') {
+      this.answ.forEach((dt: any) => {
+        dt.questionid.category == 'Music' ? this.catAnsw.push(dt) : '';
+      });
+    }
+  }
+  getCategory3(category: string) {
+    this.catAnsw = [];
+    if (category == 'Sports') {
+      this.answ.forEach((dt: any) => {
+        dt.questionid.category == 'Sports' ? this.catAnsw.push(dt) : '';
+      });
+    }
+  }
+  getCategory4(category: string) {
+    this.catAnsw = [];
+    if (category == 'Technical') {
+      this.answ.forEach((dt: any) => {
+        dt.questionid.category == 'Technical' ? this.catAnsw.push(dt) : '';
+      });
+    }
+  }
+
+
+
+
+
+
+  // getCategory(category:string){
+  //   this.catAnsw=[];
+  //   switch (category) {
+  //     case 'A':
   //     this.answ.forEach((dt: any) => {
   //       dt.questionid.category == 'Education' ? this.catAnsw.push(dt) : '';
   //     });
-  //   }
-   }
+  //     break;
 
+  //     case 'B':
+  //     this.answ.forEach((dt: any) => {
+  //       dt.questionid.category == 'Music' ? this.catAnsw.push(dt) : '';
+  //     });
+  //     break;
 
+  //     case 'C':
+  //     this.answ.forEach((dt: any) => {
+  //       dt.questionid.category == 'Sports' ? this.catAnsw.push(dt) : '';
+  //     });
+  //     break;
 
+  //     case 'D':
+  //     this.answ.forEach((dt: any) => {
+  //       dt.questionid.category == 'Technical' ? this.catAnsw.push(dt) : '';
+  //     });
+  //     break;
 
+  // }
+
+  // }
 }

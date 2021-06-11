@@ -7,7 +7,7 @@ var profileImageSchema=mongoose.Schema({
         ref:'userRegister',
 
     },
-    imagepath:{
+    image:{
         type:String,
 
     },

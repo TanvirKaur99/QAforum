@@ -6,6 +6,7 @@ require('./addcredModel');
 var answerSchema=mongoose.Schema({
   answer:{
     type:String,
+    required:[true,"answer is required"]
   },
 
   questionid:{

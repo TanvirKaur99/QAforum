@@ -19,18 +19,21 @@
            <p><a href="#">Category</a></p>
         </div>
         <div class="container-fluid Heading pt-2 shadow-sm p-3 bg-body rounded">
-          <nav>
-            <ul class="greyleft">
+          <nav class="hover1">
+            <ul class="greyleft"a>
               <li  class="sidenav">
                 <a (click)="getCategory('Education')">Education</a>
               </li>
               <li class="sidenav">
-                <a href="#">Music</a>
+                <a (click)="getCategory2('Music')">Music</a>
               </li>
               <li class="sidenav">
-                <a href="#">Sports</a>
+                <a (click)="getCategory3('Sports')">Sports</a>
               </li>
               <li class="sidenav">
+                <a (click)="getCategory4('Technical')">Technical</a>
+              </li>
+              <!-- <li class="sidenav">
                 <a href="#">Mathematics</a>
               </li>
               <li class="sidenav">
@@ -44,7 +47,7 @@
               </li>
               <li class="sidenav">
                 <a href="#">+ Discover Category</a>
-              </li>
+              </li> -->
             </ul>
           </nav>
         </div>
@@ -66,10 +69,15 @@
            <span class="username"><img src="../../assets/assets/img/icon/userimage.png" width="30"  alt="userimg"> {{ans1.userid.name}}</span><br>
 
            <!-- <span class="close mt-2"><a href="#"><img src="../../assets/assets/img/icon/close-window.png" width="30" alt="abc"></a></span><br> -->
-           <span class="follow mt-0"> lives in {{ans1.credentialid.address}} ,</span>
+            <!-- <span class="follow mt-0"> lives in {{ans1.credentialid.address}} ,</span>
            <span class="follow mt-0"> {{ans1.credentialid.location}}  </span>
            <span class="follow">{{ans1._id.date}}</span>
-           <span class="follow ml-2"><a href="#"></a>Follow</span>
+           <span class="follow ml-2"><a href="#"></a>Follow</span> -->
+
+
+           <span class="follow mt-0"> lives in New Delhi , India</span>
+           <span class="follow"> 2Feb,2018</span>
+           <span class="follow ml-2"><a href="#"></a> Follow</span>
 
            <!-- For displaying the questions -->
 
@@ -134,13 +142,13 @@
                         #questionid="ngModel"
                         [(ngModel)]="ans1.questionid._id"
                         >
-
+<!--
                          <input
                         type="hidden"
                         name="credentialid"
                         #credentialid="ngModel"
                         [(ngModel)]="ans1.credentialid._id"
-                        >
+                        > -->
 
                       <mat-form-field class="ansfield">
                         <textarea matInput name="answer" class="answerText"  rows="3" placeholder="Write Answer"
@@ -179,20 +187,19 @@
            <tr><a href="#">Follow interesting Peoples.</a></tr>
            <button mat-button class="btn-block">Follow interesting Peoples</button>
          </div> -->
-         <div class="container-fluid Heading shadow-sm bg-body rounded btndiv">
-           <!-- <tr><a routerLink="/addque">Ask a Question</a> -->
-           <!-- <button mat-button  class="btn-block" (click)="askque()">Ask a question</button> -->
 
-         </div>
          <div class="container-fluid Heading shadow-sm bg-body rounded btndiv">
-           <!-- <tr><a routerLink="/answer">Answer a Question</a></tr> -->
+           <!-- Event binding on (click) -->
+
+
+
            <button mat-button class="btn-block"(click)="ansQue()">Answer a Question</button>
          </div>
         <!-- </table> -->
         <div class="container Heading pt-2 shadow-sm p-3 mt-4 bg-body rounded">
           <p><a href="#">Links to Follow</a></p>
         </div>
-        <table class="tablebox">
+        <table class="tablebox hovera">
           <div class="container-fluid Heading shadow-sm bg-body rounded box">
             <tr><a href="https://www.udemy.com/?deal_code=&utm_term=Homepage&utm_content=Textlink&utm_campaign=Rakuten-default&ranMID=39197&ranEAID=%2F68Yt01SgtI&ranSiteID=_68Yt01SgtI-PO0gUmQL__4ZyKGIVV3q0g&LSNPUBID=%2F68Yt01SgtI&utm_source=aff-campaign&utm_medium=udemyads">Our Teachers on Udemy</a></tr>
           </div>

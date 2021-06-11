@@ -20,6 +20,8 @@ export class LoginComponent implements OnInit {
   }
    //blank array
    userdata:any=[];
+   successalert:boolean=false;
+  failalert:boolean=false
 
 
   logindata(f:NgForm)
@@ -31,17 +33,29 @@ export class LoginComponent implements OnInit {
      console.log(this.userdata.token);//returns token in normal form
      this.userservice.setToken(this.userdata.token);//store token in response
      this.userservice.setuserId(this.userdata.user._id);//store userid in response
-     alert('Login successfully')
-    this.router.navigateByUrl('/questions');
+     //alert('Login successfully')
+    //this.router.navigateByUrl('/questions');
      //this.router.navigateByUrl('/userprofile');
+     this.successalert=true
    }
     ,(err)=>{
       console.log(err);
       this.userservice.setToken(this.userdata.token);
-      alert('Error in Password or email')
+      //alert('Error in Password or email')
+      this.failalert=true
 
 
     })
   }
+  successclosealert(){
+    this.successalert=false;
+    this.router.navigateByUrl('/profile');
+
+  }
+
+  failclosealert(){
+   this.failalert=false;
+ }
 
 }
+

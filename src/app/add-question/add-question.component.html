@@ -34,7 +34,7 @@
      </div>
 
      <div class="container pl-4 divw">
-       <span class="username ml-4 text-cap"><img src="../../assets/assets/img/icon/userimage.png" width="30"  alt="userimg">{{userinfo.name}}</span>
+       <span class="username ml-4 "><img src="../../assets/assets/img/icon/userimage.png" width="30"  alt="userimg">{{userinfo.name}}</span>
        <!-- <span> asked to</span> -->
        <!-- <select class="form-select form-select-sm to" aria-label=".form-select-sm example">
          <option selected>Public</option>
@@ -49,9 +49,7 @@
         type="hidden"
         name="user"
         #user="ngModel"
-        [(ngModel)]="userservice.newQuePost.user"
-
-        >
+        [(ngModel)]="userservice.newQuePost.user">
 
        <mat-form-field class="matwidth" >
          <mat-label> Category of question</mat-label>
@@ -59,6 +57,7 @@
          name="category"
         #category="ngModel"
         [(ngModel)]="userservice.newQuePost.category"
+        [ngClass]="{'is-invalid':questionform.submitted && category.invalid}"
          >
            <mat-option value="Music">Music</mat-option>
            <mat-option value="Education">Education</mat-option>
@@ -67,15 +66,28 @@
 
      </mat-select>
 
-    </mat-form-field>
+  </mat-form-field>
+  <mat-error  *ngIf= "questionform.submitted && category.invalid">
+   <mat-error *ngIf="category.errors?.required">
+        Category should be choose
+   </mat-error>
+   </mat-error>
 
 
        <mat-form-field class="matwidth">
          <input matInput placeholder="Write your question here."
          name="question"
         #question="ngModel"
-        [(ngModel)]="userservice.newQuePost.question" >
+        [(ngModel)]="userservice.newQuePost.question"
+        required
+        [ngClass]="{'is-invalid':questionform.submitted && question.invalid}" >
        </mat-form-field>
+       <mat-error  *ngIf= "questionform.submitted && question.invalid">
+        <mat-error *ngIf="question.errors?.required">
+          Question should be entered
+        </mat-error>
+        </mat-error>
+
 
 
        <mat-form-field class="matwidth">

@@ -42,11 +42,7 @@ ul li.sidenav{
   font-size: 1.5rem;
   text-decoration: none;
 }
-.Heading p a:hover{
-  color: #46637c  ;
-  font-weight: bold;
-  font-size: 1.6rem;
-}
+
 
 /* Questions Area */
 
@@ -96,3 +92,15 @@ button.draftbtn{
 } */
 /* RIGHT PORTION */
 
+.hover1 li a:hover{
+  color:  rgb(1, 12, 3);
+  font-size: 1rem  !important;
+  font-weight: 500;
+
+}
+
+.hovera tr a:hover {
+  color: rgb(1, 12, 3);
+  font-size: 1rem !important ;
+  font-weight: 500;
+}

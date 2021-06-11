@@ -22,8 +22,10 @@ import { AddQuestionComponent } from './add-question/add-question.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import {FileUploadModule} from 'ng2-file-upload';
 
 import{FormsModule} from '@angular/forms';
+import {ReactiveFormsModule} from '@angular/forms';
 //material modules
 import{MaterialModule} from './material.module';
 import { LogoutComponent } from './logout/logout.component';
@@ -64,8 +66,10 @@ import { EditCredentialsComponent } from './edit-credentials/edit-credentials.co
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     MaterialModule,
-    HttpClientModule
+    HttpClientModule,
+    FileUploadModule
 
   ],
   providers: [AuthGuard],

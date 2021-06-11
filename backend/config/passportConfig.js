@@ -1,4 +1,6 @@
 var passport = require('passport');
+
+//strategies to authenticate requests
 var localpassport = require('passport-local').Strategy;
 
 require('../model/registerModel');// model file  imported

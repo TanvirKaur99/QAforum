@@ -37,7 +37,8 @@ export class AddQuestionComponent implements OnInit {
   onadd(f:NgForm){
     this.userservice. addQuePost(f.value).subscribe((res)=>{
     console.log(res);
-    alert('Question submitted successfully')
+    alert('Question submitted successfully');
+    this.router.navigateByUrl('/questions')
 
 
 
@@ -47,7 +48,7 @@ export class AddQuestionComponent implements OnInit {
     )
   }
   close(){
-    this.router.navigateByUrl('/userprofile')
+    this.router.navigateByUrl('questions')
   }
   }
 

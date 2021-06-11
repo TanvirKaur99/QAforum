@@ -11,18 +11,25 @@ var registerSchema = mongoose.Schema({
     },
     contact:{
         type:String,
+        required:[true,'contact should not left empty'],
     },
     password:{
         type:String,
         required:[true,'password should not left empty'],
         minlength:[4,'Password should be greater than 4']
     },
-    
+resetToken:String,
+expiretoken:Date,
+created_at    :{
+  type:Date,required:true,default:Date.now
+}
+
+
 
 });
 
 
- 
+
 
 
 //methods for encrypting password

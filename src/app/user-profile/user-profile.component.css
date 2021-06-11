@@ -1,63 +1,25 @@
 
-/* .border{
-  border: 1px solid black;
-} */
-/* .addcreden a{
-  font-size: 0.7rem;
-  color: #939598;
-}
-.borderit{
-  border: 1px solid red;
-}*/
+.wr .text {
+  position:relative;
+  bottom:30px;
+  left:200px;
+  visibility:hidden;
+  background-color: rgb(203, 243, 243);
+  width: 180px;
+  padding: auto;
+
+  }
+
+  .wr:hover .text {
+  visibility:visible;
+  }
+
+
+
 .answerText,
 .ansfield {
   width: 100%;
 }
-/* .example-stretched-tabs{
-  max-width: 20px;
-} */
-/* .belowdiv{ */
-  /* max-height: 500px; */
-  /* min-height: 200px; */
-  /* border: 1px solid red;
- } */
-
-
-
-/* .col{ */
-  /* border: 1px solid black; */
-/* } */
-/* ul li.sidenav{
-  margin-bottom:15px;
-  text-decoration: none !important;
-  color: black !important;
-}
-.greyleft li a{
-  color: gray;
-}
-.Heading{
-  border: 1px solid #ccccb3;
-  background-color: white;
-  margin-bottom: 0.6rem; */
-  /* box-shadow: 5px 10px #888888; */
-/* }
-.Heading p{
-  color: #002d5b  ;
-  font-weight: bold;
-  font-size: 1.5rem;
-}
-.Heading p a{
-  color: #002d5b  ;
-  font-weight: bold;
-  font-size: 1.5rem;
-  text-decoration: none;
-}
-.Heading p a:hover{
-  color: #46637c  ;
-  font-weight: bold;
-  font-size: 1.6rem;
-} */
-/* choose here */
  span.username{
   color: #282829;
   font-weight: bold;
@@ -74,11 +36,7 @@ span.answerinfo{
 span.close{
   margin-left: auto;
 }
-/*
-.question a{
-  color: #282829;
-  font-weight: bold;
-} */
+
  .rightbottom{
   display: inline;
   float: right;
@@ -102,23 +60,7 @@ span.dislike{
   margin-left: auto;
 }
 
-/* right portion */
-/* .tablebox{
-  width: 100%;
-}
-.tablebox div tr a {
-  text-decoration: none;
-  color: #282829;
-}
-.topics{
-  border: 1px solid #ccccb3;
-  background-color: white;
-  margin-bottom: 0.6rem;
-  color: #808080;
-} */
-/* button.topicbtn{
-  width: 100%;
-} */
+
 body{
   background: -webkit-linear-gradient(left, #3931af, #00c6ff);
 }

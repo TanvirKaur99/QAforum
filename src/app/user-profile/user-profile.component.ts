@@ -6,7 +6,8 @@ import { UserService } from '../shared/user.service';
 //import{AddQuestionComponent} from '../add-question/add-question.component';
 import { MatDialog } from '@angular/material/dialog';
 //import{EditCredentialsComponent} from '../edit-credentials/edit-credentials.component'
-import { NgForm } from '@angular/forms';
+import { FormGroup, NgForm } from '@angular/forms';
+import {FormBuilder} from '@angular/forms'
 
 @Component({
   selector: 'app-user-profile',
@@ -15,19 +16,36 @@ import { NgForm } from '@angular/forms';
 })
 export class UserProfileComponent implements OnInit {
 
+imageform!:FormGroup;
+
+
   constructor(public userservice:UserService,
     public router:Router,
-    private dialog:MatDialog) { }
+    private dialog:MatDialog,
+    public fb:FormBuilder) {
+      this.imageform = this.fb.group({
+        userid:[this.userservice.getuserId()],
+        image:[null]
+
+      })
+
+    }
 
   id:any;
+
+  successalert:boolean=false;
+  failalert:boolean=false;
+
   userdata:any
   userinfo:any=[]
 
   quesresponse:any;
   que:any=[];
+  datafile:any
 
   answerresponse:any=[];
   ans:any=[];
+  localUrl:any
 
 
   answerresponse1:any=[];
@@ -37,10 +55,13 @@ export class UserProfileComponent implements OnInit {
   cred:any=[];
 
   imagedata:any=[];
-  image:any=[];
+
+  proimage1:any=[];
 
   ngOnInit(): void {
 
+
+//userinformation
     this.id=this.userservice.getuserId();// get userid and sent with api to get user info
     console.log(this.id);//get user id in normal form
 
@@ -64,6 +85,7 @@ export class UserProfileComponent implements OnInit {
   })
 
 
+
   //for displaying Answers by the user
   this.userservice.dispUserAns(this.userservice.getuserId()).subscribe((res)=>{
     this.answerresponse=res;
@@ -75,6 +97,21 @@ export class UserProfileComponent implements OnInit {
     console.log(err);
   })
 
+
+
+// display user image
+this.userservice.displayuserimage(this.id).subscribe((res)=>{
+  console.log(this.id);
+  this.imagedata=res;
+  this.proimage1=this.imagedata.data[0];
+  console.log(this.proimage1);
+
+}
+,(err)=>{
+  console.log(err);
+
+}
+)
 
 
 
@@ -138,6 +175,7 @@ close(){
   this.router.navigateByUrl('');
 }
 
+//for submitting answers
 postans(f:NgForm){
   console.log(f.value);
 
@@ -149,26 +187,62 @@ postans(f:NgForm){
    console.log(res);
    this.ans1=this.answerresponse1.data;
   //  location.reload();
-   alert("answer added successfully");
+  this.successalert= true;
  }
  ,(err)=>{
-   console.log(err);
+  this.failalert= true;
  })
 }
 
 
-onadd(f:NgForm){
-  console.log(f.value);
-  this.userservice.userimage(f.value).subscribe((res)=>{
+onadd(){
 
-    // console.log(res);
-    this.imagedata=res;
-    this.image=this.imagedata.data;
-    // console.log(this.image);
-    alert('profile picture added successfully');
-  },(err)=>{
-    console.log(err);
+  console.log(this.imageform.value);
+
+  this.userservice.userimage(this.imageform.value.userid, this.imageform.value.image).subscribe((res)=>{
+  console.log(res);
+
   }
-  )
- }
+  ,(err)=>{
+    console.log(err);
+    this.failalert= true;
+
+  })
+
+
+
+  }
+
+//bootstrap alert for success
+successclosealert(){
+  this.successalert=false;
+  location.reload();
+}
+
+ //bootstrap alert for failure
+failclosealert(){
+  this.failalert=false;
+
+}
+
+
+// submit image data through form
+
+showPreviewImage(event: any) {
+
+  if (event.target.files && event.target.files[0]) {
+    var reader = new FileReader();
+    reader.onload = (event: any) => {
+        this.localUrl = event.target.result;
+    }
+    reader.readAsDataURL(event.target.files[0]);
+const datafile=event.target.files[0];
+console.log(datafile);
+this.imageform.patchValue({
+image:datafile
+});
+
+}
+}
+
 }
