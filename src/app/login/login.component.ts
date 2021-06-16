@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
      this.userservice.setuserId(this.userdata.user._id);//store userid in response
      //alert('Login successfully')
     //this.router.navigateByUrl('/questions');
-     //this.router.navigateByUrl('/userprofile');
+    this.router.navigateByUrl('/userprofile');
      this.successalert=true
    }
     ,(err)=>{
@@ -56,6 +56,11 @@ export class LoginComponent implements OnInit {
   failclosealert(){
    this.failalert=false;
  }
+
+ sendmail(){
+
+
+}
 
 }
 

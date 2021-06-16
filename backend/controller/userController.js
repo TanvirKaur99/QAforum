@@ -13,6 +13,7 @@ const jwt = require('jsonwebtoken');
 const multer=require('multer');
 const nodemailer = require("nodemailer");
 const crypto=require('crypto');
+const bcrypt=require('bcrypt');
 
 
 //FOR MODELS VARIABLES
@@ -469,34 +470,49 @@ var storage=multer.diskStorage({
       if(err){
       console.log("error in uploading file" +err);
       }else{
-        console.log((req.file))
-        console.log("file uploading successfully");
-        const image=req.file.path;
-        console.log(image)
-        // var proimage=new proImgData({
-        //  // userid:req.params.userid,
+
+  const url=req.protocol+ '://' + req.get("host");
+      //  console.log(url)
+    imageUrl=url+'/uploads/'+req.file.filename;
+      //console.log(imageUrl)
+
        const userid=req.body.userid
        console.log(userid)
-        //   image:req.file.path
+ UserData.findOne({_id:userid}).then(user=>{
+  if(!user){
+   res.status(500).json({
 
-        // });
+       msg:"User does not Exists"
+          })
+}
+UserData.findByIdAndUpdate({_id:userid},{
+   $set:{
+     image:imageUrl
+   }
 
-        proImgData.findOneAndUpdate({userid:req.body.userid},{$set:{image:req.file.path}
-        })
-        .then((docs)=>{
-console.log(docs)
-            return res.status(200).json({
-                success:true,
-                message:'Profile image updated',
-                data:docs
-            })  })
-            .catch((err)=>{
-                return res.status(401).json({
-                    success:false,
-                    message:"error in updating profilepicture",
-                    error:err.message
-                })
-            })
+}).then((result)=>{
+  console.warn(result)
+  res.status(200).json({
+    msg:"Image updated in db"
+
+  })
+}).catch(err=>{
+  console.log(err)
+})
+
+
+})
+  //user.image=imageUrl
+  // user.save().then((result)=>{
+  //   res.status(200).json({
+  //  //console.log(image)
+     //msg:"Image updated in Db"
+
+      }
+})
+
+  }
+
 
 
     //     proimage.save().then((docs)=>{
@@ -516,9 +532,7 @@ console.log(docs)
 
     //          console.log(req.file);
 
-     }
-   })
-  }
+
 
 
 
@@ -543,27 +557,28 @@ console.log(docs)
 
   //update image
 
-  module.exports.updateimage=(req,res)=>{
+  // module.exports.updateimage=(req,res)=>{
 
-    var updateimage={image:req.body.image}
+  //   var updateimage={image:req.body.image}
 
-    proImgData.findOneAndUpdate({userid:req.params.userid},{$set:updateimage},{new:true})
-    .then((docs)=>{
+  //   proImgData.findOneAndUpdate({userid:req.params.userid},{$set:updateimage},{new:true})
+  //   .then((docs)=>{
 
-        return res.status(200).json({
-            success:true,
-            message:'Profile image updated',
-            data:docs
-        })  })
-        .catch((err)=>{
-            return res.status(401).json({
-                success:false,
-                message:"error in updating profilepicture",
-                error:err.message
-            })
-        })
+  //       return res.status(200).json({
+  //           success:true,
+  //           message:'Profile image updated',
+  //           data:docs
+  //       })  })
+  //       .catch((err)=>{
+  //           return res.status(401).json({
 
-  }
+  //               success:false,
+  //               message:"error in updating profilepicture",
+  //               error:err.message
+  //           })
+  //       })
+
+  // }
 
   let transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
@@ -595,10 +610,15 @@ module.exports.forgotpass=(req,res)=>{
             })
         }
         const token=crypto.randomBytes(16).toString('hex');
-        const link='http://localhost:3000/users/reset-password/'+token;
+        const link='http://localhost:3000/reset-password/'+token;
        // console.log(token);
        user.resetToken=token;
-       user.expireToken=Date.now+36000000;
+       var today=new Date();
+       console.log(today)
+       var time=today.getHours()+1 + ":" + today.getMinutes();
+       console.log(time)
+
+       user.expireToken=time
        user.save().then((result)=>{
         transporter.sendMail({
           from: '"QAForum 👻" <qaforum2021@gmail.com>', // sender address
@@ -620,7 +640,7 @@ module.exports.forgotpass=(req,res)=>{
 
 module.exports.resetPass=(req,res)=>{
   const getToken=req.params.token
-  //console.warn(getToken)
+  console.warn(getToken)
   const newPassword=req.body.password
   UserData.findOne({resetToken:getToken,expireToken:{$gt:Date.now()}}).then(user=>{
       if(!user){

@@ -16,6 +16,8 @@ import{AuthGuard} from './shared/auth.guard';
 import { AddcredentialsComponent } from './addcredentials/addcredentials.component';
 import { EditprofileComponent } from './editprofile/editprofile.component';
 import { EditCredentialsComponent } from './edit-credentials/edit-credentials.component';
+import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 //import { AddcredentialsComponent } from './addcredentials/addcredentials.component';
 
 const routes: Routes = [
@@ -73,6 +75,14 @@ const routes: Routes = [
   {
     path:'editcredentials',
     component:EditCredentialsComponent
+  },
+  {
+    path:'forgetpass',
+    component:ForgotpasswordComponent
+  },
+  {
+    path:'resetpass',
+    component:ResetpasswordComponent
   }
 
 ];

@@ -33,6 +33,8 @@ import { EditprofileComponent } from './editprofile/editprofile.component';
 import { AddcredentialsComponent } from './addcredentials/addcredentials.component';
 import { AuthGuard } from './shared/auth.guard';
 import { EditCredentialsComponent } from './edit-credentials/edit-credentials.component';
+import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 
 
 
@@ -59,6 +61,8 @@ import { EditCredentialsComponent } from './edit-credentials/edit-credentials.co
     EditprofileComponent,
     AddcredentialsComponent,
     EditCredentialsComponent,
+    ForgotpasswordComponent,
+    ResetpasswordComponent,
 
   ],
   imports: [

@@ -7,8 +7,6 @@ var express = require('express');
 var bodyparser = require('body-parser');
 var mongoose = require('mongoose');
 const path = require("path");
-
-
 var routes=require('./routes/userRoutes');
 
 //const session = require('express-session');
@@ -16,7 +14,9 @@ mongoose.set('useCreateIndex', true);
 
 // create new express app and save it as "app"
 const app = express();
-app.use("/uploads", express.static(path.join("backend/uploads")));
+app.use("/uploads", express.static(path.join(__dirname,"/uploads")));
+const cors = require("cors");
+app.use(cors({origin:'http://localhost:4200'}));
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({extended:true}));
 

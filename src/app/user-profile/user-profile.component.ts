@@ -46,7 +46,7 @@ imageform!:FormGroup;
   answerresponse:any=[];
   ans:any=[];
   localUrl:any
-
+  successMessage: any;
 
   answerresponse1:any=[];
   ans1:any=[]
@@ -69,7 +69,13 @@ imageform!:FormGroup;
      this.userdata=res;
    //  console.log(res);
      this.userinfo=this.userdata.data;
+
    //  console.log(this.userinfo);//give userinfo on console without success and msg in backend format
+   setTimeout(() => {
+    this.successMessage = null;
+    this.router.navigate(['userprofile']);
+  }, 2000);
+
   })
 
 
@@ -100,18 +106,18 @@ imageform!:FormGroup;
 
 
 // display user image
-this.userservice.displayuserimage(this.id).subscribe((res)=>{
-  console.log(this.id);
-  this.imagedata=res;
-  this.proimage1=this.imagedata.data[0];
-  console.log(this.proimage1);
+// this.userservice.displayuserimage(this.id).subscribe((res)=>{
+//   console.log(this.id);
+//   this.imagedata=res;
+//   this.proimage1=this.imagedata.data[0];
+//   console.log(this.proimage1);
 
-}
-,(err)=>{
-  console.log(err);
+// }
+// ,(err)=>{
+//   console.log(err);
 
-}
-)
+// }
+// )
 
 
 
@@ -120,6 +126,7 @@ this.userservice.displayuserimage(this.id).subscribe((res)=>{
          this.credentialdata=res;
          console.log(res);
          this.cred=this.credentialdata.data;
+
 
      }
      ,(err)=>{

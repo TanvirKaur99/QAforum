@@ -18,8 +18,11 @@ var registerSchema = mongoose.Schema({
         required:[true,'password should not left empty'],
         minlength:[4,'Password should be greater than 4']
     },
+    image:{
+   type:String
+    },
 resetToken:String,
-expiretoken:Date,
+expireToken:String,
 created_at    :{
   type:Date,required:true,default:Date.now
 }

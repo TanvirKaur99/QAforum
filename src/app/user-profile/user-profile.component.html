@@ -30,7 +30,7 @@
                 <div class="profile-img">
 
                   <form [formGroup]= "imageform" (ngSubmit)="onadd()" enctype="multipart/form-data">
-                   <img src="" alt=""/>
+                    <img src="{{userinfo.image}}" height="200" width="200" *ngIf="!localUrl" />
 
                     <input
                     type="hidden"
@@ -58,6 +58,7 @@
                        <!-- [disabled]="!uploader.getNotUploadedItems.length" -->
                  </form>
                 </div>
+
             </div>
 
 
@@ -65,7 +66,6 @@
                 <div class="profile-head">
                             <h1>
                               {{userinfo.name}}
-
                             </h1>
 
                             <p class="proile-rating">RANKINGS : <span>8/10</span></p>

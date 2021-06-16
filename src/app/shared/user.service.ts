@@ -172,6 +172,19 @@ userimage(userid:any, image:any){
 displayuserimage(id:any){
   return this.http.get('http://localhost:3000/displayimage/'+id);
 }
+
+
+
+//email sending for forget password
+forgetpassword(user:User){
+  return this.http.post('http://localhost:3000/forgot-password',user);
+}
+
+//resetpassword
+resetpassword(password:User){
+  return this.http.post('http://localhost:3000/reset-password/:token',password);
+
+}
 // login
 loggedin(){
   return localStorage.getItem('usertoken');
