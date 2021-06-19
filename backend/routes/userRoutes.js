@@ -19,7 +19,7 @@ approute.get('/displayQuepost/:userid',myctrl.displayQuepost);//for displaying a
 
 
 approute.post('/addans',myctrl.addanswers);       //add answer to db
-//approute.get('/displayans/:questionid',myctrl.displayanswer);    //get answers of the same question
+approute.get('/displayans/:questionid',myctrl.dispQuesans);    //get answers of the same question
 approute.get('/displayUserans/:userid',myctrl.displayUseranswer);   //get all answers given by specific user question
 approute.get('/displayallans',myctrl.allanswers);       //for dispalying all the answers
 
@@ -28,7 +28,7 @@ approute.put('/updateRecord/:id',myctrl.updatedData);   //for updating the user 
 
 
 approute.get('/allques',myctrl.allquestions);  //for getting all the questions in questions database
-approute.get('/allques2',myctrl.allquestions2);
+//approute.get('/allques2',myctrl.allquestions2);
 
 //  approute.put('/like',myctrl.likePost);
 

@@ -39,20 +39,14 @@ export class QuestionsComponent implements OnInit {
     this.id = this.userservice.getuserId(); // get userid and sent with api to get user info
     console.log(this.id); //get user id in normal form
 
-    //    this.userdata= this.userservice.display(this.id).subscribe((res)=>{//with display method returns success message and data
-    //    this.userdata=res;
-    //  //  console.log(res);
-    //    this.userinfo=this.userdata.data;
-    //  //  console.log(this.userinfo);//give userinfo on console without success and msg in backend format
-    // })
+       this.userdata= this.userservice.display(this.id).subscribe((res)=>{//with display method returns success message and data
+       this.userdata=res;
+     //  console.log(res);
+       this.userinfo=this.userdata.data;
+      console.log(this.userinfo);//give userinfo on console without success and msg in backend format
+    })
 
-    // this.userservice.getAllQuestions().subscribe((res)=>{
-    //   this.quesresponse=res;
-    //   this.que=this.quesresponse.data;
-    // },
-    // (err)=>{
-    //      console.log(err);
-    //    })
+
 
     this.userservice.displayallans().subscribe(
       (res) => {
@@ -69,7 +63,17 @@ export class QuestionsComponent implements OnInit {
         console.log(err);
       }
     );
+
+
+    //testing
+    // this.userservice.displayanswer(this.userservice.getquestionid()).subscribe((res)=>{
+    //   this.ansresponse = res;
+    //   console.log(res);
+    //   this.answ = this.ansresponse.data;
+
+    // },)
   }
+
 
   postans(f: NgForm) {
     console.log(f.value);

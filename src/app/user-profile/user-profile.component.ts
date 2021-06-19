@@ -68,13 +68,9 @@ imageform!:FormGroup;
      this.userdata= this.userservice.display(this.id).subscribe((res)=>{//with display method returns success message and data
      this.userdata=res;
    //  console.log(res);
+
      this.userinfo=this.userdata.data;
 
-   //  console.log(this.userinfo);//give userinfo on console without success and msg in backend format
-   setTimeout(() => {
-    this.successMessage = null;
-    this.router.navigate(['userprofile']);
-  }, 2000);
 
   })
 
@@ -119,14 +115,15 @@ imageform!:FormGroup;
 // }
 // )
 
-
+//console.log(this.userservice.getuserId())
 
   //for displaying the credentials by the user
   this.userservice.displaycredentials(this.userservice.getuserId()).subscribe((res)=>{
          this.credentialdata=res;
          console.log(res);
-         this.cred=this.credentialdata.data;
 
+         this.cred=this.credentialdata.data;
+         //alert(JSON.stringify(this.cred))
 
      }
      ,(err)=>{
@@ -208,6 +205,15 @@ onadd(){
 
   this.userservice.userimage(this.imageform.value.userid, this.imageform.value.image).subscribe((res)=>{
   console.log(res);
+
+  this.successMessage = "Image Updated sucessfully.";
+
+  setTimeout(() => {
+    this.successMessage = null;
+
+    this.router.navigate(['userprofile']);
+  }, 5000);
+
 
   }
   ,(err)=>{

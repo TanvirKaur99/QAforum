@@ -236,22 +236,23 @@ module.exports.addanswers=(req,res)=>{
 
 //display answer of a particular question
 
-// module.exports.displayanswer=(req,res)=>{
-//  // console.log(req.params.questionid)
-//   return ansData.find({questionid:req.params.questionid}).populate('questionid').exec().then((docs)=>{
-//     return res.status(200).json({
-//       success:true,
-//       message:'list of answers',
-//       data:docs
-//   })
-// }).catch((err)=>{
-//   return res.status(400).json({
-//     success:false,
-//     message:'error in displaying',
-//     error:err.message
-// })
-// })
-// }
+module.exports.dispQuesans=(req,res)=>{
+ // console.log(req.params.questionid)
+  return ansData.find({questionid:req.params.questionid}).populate('_id')
+  .populate('questionid').populate('userid').exec().then((docs)=>{
+    return res.status(200).json({
+      success:true,
+      message:'list of answers',
+      data:docs
+  })
+}).catch((err)=>{
+  return res.status(400).json({
+    success:false,
+    message:'error in displaying',
+    error:err.message
+})
+})
+}
 
 
 
@@ -351,7 +352,7 @@ module.exports.updatedData=(req,res)=>{
 var _id = mongoose.Types.ObjectId();
 
 module.exports.allanswers=(req,res)=>{
-  return ansData.find({},{ sort: { 'date' : 1 } },{_id:1, userid:1,questionid:1, credentialid:1, date:1}).populate('_id')
+  return ansData.find({},{_id:1, userid:1,questionid:1, credentialid:1, date:1}).populate('_id')
   .populate('questionid').populate('userid').populate('credentialid').exec().then((docs)=>{
     return res.status(200).json({
       success:true,
@@ -368,30 +369,30 @@ module.exports.allanswers=(req,res)=>{
 }
 
   // for getting all the questions asked Except the user who is logged in
-  var user = mongoose.Types.ObjectId();
+//   var user = mongoose.Types.ObjectId();
 
- module.exports.allquestions2=(req,res)=>{
+//  module.exports.allquestions2=(req,res)=>{
 
- newQuePost.find({user:{$ne:user._id}}).select({question:1, _id,user:1}).then((docs)=>{
-return res.status(200).json({
-success:true,
-message:'questions found',
-data:docs
+//  newQuePost.find({user:{$ne:user._id}}).select({question:1, _id,user:1}).then((docs)=>{
+// return res.status(200).json({
+// success:true,
+// message:'questions found',
+// data:docs
 
-})
+// })
 
-})
+// })
 
-.catch((err)=>{
-  return res.status(400).json({
-    success:false,
-    message:'questions not found',
-    error:err.message
+// .catch((err)=>{
+//   return res.status(400).json({
+//     success:false,
+//     message:'questions not found',
+//     error:err.message
 
-  })
- })
+//   })
+//  })
 
-}
+// }
 
   //for liking a post
 

@@ -66,23 +66,24 @@
 
         <div class="container Heading shadow-sm p-3 bg-body rounded "  *ngFor="let ans1 of catAnsw">
 
-           <span class="username"><img src="../../assets/assets/img/icon/userimage.png" width="30"  alt="userimg"> {{ans1.userid.name}}</span><br>
+           <span class="username"><img src="{{ans1.userid.image}}" width="30"  alt="userimg"> {{ans1.userid.name}}</span><br>
 
            <!-- <span class="close mt-2"><a href="#"><img src="../../assets/assets/img/icon/close-window.png" width="30" alt="abc"></a></span><br> -->
-            <!-- <span class="follow mt-0"> lives in {{ans1.credentialid.address}} ,</span>
+           <span class="follow mt-0"> lives in {{ans1.credentialid.address}} ,</span>
            <span class="follow mt-0"> {{ans1.credentialid.location}}  </span>
            <span class="follow">{{ans1._id.date}}</span>
-           <span class="follow ml-2"><a href="#"></a>Follow</span> -->
+           <span class="follow ml-2"><a href="#"></a>Follow</span>
 
 
-           <span class="follow mt-0"> lives in New Delhi , India</span>
+           <!-- <span class="follow mt-0"> lives in New Delhi , India</span>
            <span class="follow"> 2Feb,2018</span>
-           <span class="follow ml-2"><a href="#"></a> Follow</span>
+           <span class="follow ml-2"><a href="#"></a> Follow</span> -->
 
            <!-- For displaying the questions -->
 
            <div class="question mt-3">
               <a href="#">
+
                 Que:{{ans1.questionid.question|titlecase}}
               </a>
             </div>
@@ -112,6 +113,7 @@
                   <div class="answered"  >
                     <div class="container Heading shadow-sm p-3 bg-body rounded mt-3">
                       <span class="username"><img src="../../assets/assets/img/icon/userimage.png" width="30"  alt="userimg">{{userinfo.name}}</span>
+                    
                     </div>
                     <div class="customfont Heading containern shadow-sm p-3 bg-body rounded ">
                       <a href="#"><img src="../../assets/assets/img/icon/bold.png" width="30" class="mr-3" alt="bold"></a>
@@ -131,7 +133,7 @@
                       <form #answer="ngForm" (ngSubmit)="postans(answer)">
 
                         <input
-                        type="hidden"
+                        type="text"
                         name="userid"
                         #userid="ngModel"
                         [(ngModel)]="userservice.answers.userid">
@@ -142,13 +144,14 @@
                         #questionid="ngModel"
                         [(ngModel)]="ans1.questionid._id"
                         >
-<!--
+
                          <input
-                        type="hidden"
+                        type="text"
                         name="credentialid"
+                        value="{{ans1.credentialid._id}}"
                         #credentialid="ngModel"
                         [(ngModel)]="ans1.credentialid._id"
-                        > -->
+                        >
 
                       <mat-form-field class="ansfield">
                         <textarea matInput name="answer" class="answerText"  rows="3" placeholder="Write Answer"

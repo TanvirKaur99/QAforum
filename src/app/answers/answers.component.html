@@ -61,7 +61,7 @@
           <span class="answerinfo">
             No answer yet .
           </span>
-          <span class="follow">last active 9m ago</span>
+          <!-- <span class="follow">{{ans.credentialid.address}}</span> -->
 
 
           <!-- div1.1 -->
@@ -100,7 +100,7 @@
                       </span>
                     </div>
                     <div class="inputans">
-                      <!-- <div *ngFor="let cred1 of cred"> -->
+                      <div *ngFor="let cred1 of cred">
 
                       <form #answerform="ngForm" (ngSubmit)="postans(answerform)">
 
@@ -118,12 +118,12 @@
 
                         >
 
-                          <!-- <input
+                          <input
                            type="hidden"
                            name="credentialid"
                            #credentialid="ngModel"
                            [(ngModel)]="cred1._id"
-                          > -->
+                          >
 
                       <mat-form-field class="ansfield">
                         <textarea matInput name="answer" class="answerText"  rows="3" placeholder="Write Answer"
@@ -144,7 +144,7 @@
                       <button type="button" class="draftbtn mt-2" mat-stroked-button >Save Draft</button>
 
                     </form>
-                  <!-- </div> -->
+                  </div>
                     </div>
                   </div>
                 </div>

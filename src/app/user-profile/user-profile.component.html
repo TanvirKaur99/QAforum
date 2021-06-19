@@ -26,11 +26,40 @@
     <!-- <form  method="post"> -->
         <div class="row">
             <div class="col-md-4">
-
+              <div  *ngIf="successMessage">
+                <span>{{successMessage}}</span>
+            </div>
                 <div class="profile-img">
 
                   <form [formGroup]= "imageform" (ngSubmit)="onadd()" enctype="multipart/form-data">
-                    <img src="{{userinfo.image}}" height="200" width="200" *ngIf="!localUrl" />
+
+                    <!-- <img src="{{userinfo.image}}" alt="" height="200" width="200" *ngIf="!localUrl" />
+                    <img src="../../assets/assets/img/hero/h1_hero.jpg" height="100" width="100" *ngIf="userinfo.image==undefined">
+                    <img [src]="localUrl"
+                    style="height:100px;width:150px;"*ngIf="localUrl"> -->
+
+
+                    <div  *ngIf="!userinfo.image; else  prfimage">
+                      <img src=" ../../assets/assets/img/hero/h1_hero.jpg" height="100" width="100" *ngIf="!localUrl" >
+                    </div>
+<ng-template #prfimage>
+
+                      <img src="{{userinfo.image}}" alt="" height="200" width="200" *ngIf="!localUrl" />
+
+
+</ng-template>
+                    <img [src]="localUrl"
+                    style="height:100px;width:150px;"*ngIf="localUrl">
+
+
+
+
+
+
+
+
+
+
 
                     <input
                     type="hidden"
@@ -38,9 +67,6 @@
                      value="{{this.userservice.getuserId()}}" formControlName="userid">
 
 
-
-                   <img [src]="localUrl"  *ngIf="localUrl"
-                         style="height:100px;width:150px;">
 
                     <div class="file btn-lg btn-primary mx-auto mt-1">
                         Change Photo

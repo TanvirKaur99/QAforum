@@ -33,12 +33,13 @@ export class AddcredentialsComponent implements OnInit {
             this.cred=this.credentialdata.data;
             console.log(this.cred);
 
-      //  location.reload();
+alert("credentials added successfully")
        this.router.navigateByUrl('/userprofile')
 
 
     },(err)=>{
       console.log(err);
+      alert("error in adding credentials")
     }
     )
 

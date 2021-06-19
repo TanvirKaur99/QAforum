@@ -158,9 +158,9 @@ getAllQuestions(){
   return this.http.get('http://localhost:3000/allques');
 }
 
-getAllQuestions2(){
-  return this.http.get('http://localhost:3000/allques2/');
-}
+// getAllQuestions2(){
+//   return this.http.get('http://localhost:3000/allques2/');
+// }
 
 userimage(userid:any, image:any){
   const formdata:any=new FormData();
